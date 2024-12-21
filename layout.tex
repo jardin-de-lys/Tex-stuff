@@ -1,0 +1,474 @@
+\documentclass[a4paper, 10pt, twoside, openany]{memoir}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%          _____                   _______                   _____             _____                    _____
+%         /\    \                 /::\    \                 /\    \           /\    \                  /\    \
+%        /::\    \               /::::\    \               /::\____\         /::\    \                /::\    \
+%       /::::\    \             /::::::\    \             /::::|   |         \:::\    \              /::::\    \
+%      /::::::\    \           /::::::::\    \           /:::::|   |          \:::\    \            /::::::\    \
+%     /:::/\:::\    \         /:::/~~\:::\    \         /::::::|   |           \:::\    \          /:::/\:::\    \
+%    /:::/__\:::\    \       /:::/    \:::\    \       /:::/|::|   |            \:::\    \        /:::/__\:::\    \
+%   /::::\   \:::\    \     /:::/    / \:::\    \     /:::/ |::|   |            /::::\    \       \:::\   \:::\    \
+%  /::::::\   \:::\    \   /:::/____/   \:::\____\   /:::/  |::|   | _____     /::::::\    \    ___\:::\   \:::\    \
+% /:::/\:::\   \:::\    \ |:::|    |     |:::|    | /:::/   |::|   |/\    \   /:::/\:::\    \  /\   \:::\   \:::\    \
+%/:::/  \:::\   \:::\____\|:::|____|     |:::|    |/:: /    |::|   /::\____\ /:::/  \:::\____\/::\   \:::\   \:::\____\
+%\::/    \:::\   \::/    / \:::\    \   /:::/    / \::/    /|::|  /:::/    //:::/    \::/    /\:::\   \:::\   \::/    /
+% \/____/ \:::\   \/____/   \:::\    \ /:::/    /   \/____/ |::| /:::/    //:::/    / \/____/  \:::\   \:::\   \/____/
+%          \:::\    \        \:::\    /:::/    /            |::|/:::/    //:::/    /            \:::\   \:::\    \
+%           \:::\____\        \:::\__/:::/    /             |::::::/    //:::/    /              \:::\   \:::\____\
+%            \::/    /         \::::::::/    /              |:::::/    / \::/    /                \:::\  /:::/    /
+%             \/____/           \::::::/    /               |::::/    /   \/____/                  \:::\/:::/    /
+%                                \::::/    /                /:::/    /                              \::::::/    /
+%                                 \::/____/                /:::/    /                                \::::/    /
+%                                  ~~                      \::/    /                                  \::/    /
+%                                                           \/____/                                    \/____/
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%math setup
+\usepackage{amsmath}
+\usepackage[amsthm]{newtxmath}
+
+%for better bold symbols
+\usepackage{bm}
+
+%load fontspec later, otherwise newtxmath has issues with bold.
+\usepackage{fontspec}
+
+%main font
+\setmainfont{Fanwood}[
+  BoldFont={EB Garamond SemiBold},
+  Numbers=Lining
+]
+%sans font, for section headings.
+\setsansfont{Jost Light}[
+  BoldFont={Jost Medium},
+]
+
+%importing integral, sum, and partial symbol from mtpro2
+\DeclareFontFamily{U}{mtt}{}
+\DeclareFontShape{U}{mtt}{m}{up}{<->mt2exa}{}
+\DeclareFontShape{U}{mtt}{m}{it}{<-7> mt2mif <7-9> mt2mis <9-> mt2mit}{}
+
+\DeclareSymbolFont{splgreek}{U}{mtt}{m}{up}
+\DeclareSymbolFont{letters}{U}{mtt}{m}{it}
+
+\SetSymbolFont{splgreek}{normal}{U}{mtt}{m}{up}
+\SetSymbolFont{letters}{normal}{U}{mtt}{m}{it}
+
+\DeclareMathSymbol{\splsum}{\mathop}{splgreek}{"50}
+\let\sum\splsum
+\DeclareMathSymbol{\intop}{\mathop}{splgreek}{"52}
+\DeclareMathSymbol{\partial}{\mathord}{letters}{64}
+
+%redefinitions because they were acting weird
+\renewcommand{\Large}{\fontsize{15}{20}\selectfont}
+\renewcommand{\LARGE}{\fontsize{22}{40}\selectfont}
+\renewcommand{\huge}{\fontsize{30}{60}\selectfont}
+\renewcommand{\Huge}{\fontsize{40}{60}\selectfont}
+\newcommand{\chapnamefontsize}{\fontsize{36}{44}\selectfont}
+\renewcommand{\HUGE}{\fontsize{144}{150}\selectfont}
+
+%fonts for chapter.
+\newfontfamily\chapterfont{Jost Light}
+\newfontfamily\chapternumfont{Riesling}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%          _____                    _____                    _____                    _____
+%         /\    \                  /\    \                  /\    \                  /\    \
+%        /::\    \                /::\    \                /::\    \                /::\    \
+%       /::::\    \              /::::\    \              /::::\    \              /::::\    \
+%      /::::::\    \            /::::::\    \            /::::::\    \            /::::::\    \
+%     /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \
+%    /:::/__\:::\    \        /:::/__\:::\    \        /:::/  \:::\    \        /:::/__\:::\    \
+%   /::::\   \:::\    \      /::::\   \:::\    \      /:::/    \:::\    \      /::::\   \:::\    \
+%  /::::::\   \:::\    \    /::::::\   \:::\    \    /:::/    / \:::\    \    /::::::\   \:::\    \
+% /:::/\:::\   \:::\____\  /:::/\:::\   \:::\    \  /:::/    /   \:::\ ___\  /:::/\:::\   \:::\    \
+%/:::/  \:::\   \:::|    |/:::/  \:::\   \:::\____\/:::/____/  ___\:::|    |/:::/__\:::\   \:::\____\
+%\::/    \:::\  /:::|____|\::/    \:::\  /:::/    /\:::\    \ /\  /:::|____|\:::\   \:::\   \::/    /
+% \/_____/\:::\/:::/    /  \/____/ \:::\/:::/    /  \:::\    /::\ \::/    /  \:::\   \:::\   \/____/
+%          \::::::/    /            \::::::/    /    \:::\   \:::\ \/____/    \:::\   \:::\    \
+%           \::::/    /              \::::/    /      \:::\   \:::\____\       \:::\   \:::\____\
+%            \::/____/               /:::/    /        \:::\  /:::/    /        \:::\   \::/    /
+%             ~~                    /:::/    /          \:::\/:::/    /          \:::\   \/____/
+%                                  /:::/    /            \::::::/    /            \:::\    \
+%                                 /:::/    /              \::::/    /              \:::\____\
+%                                 \::/    /                \::/____/                \::/    /
+%                                  \/____/                                           \/____/
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%to change margins mid document, for parts etc.
+\usepackage{geometry}
+
+%page layout
+\setstocksize{260mm}{200mm}
+\settrimmedsize{0.9\stockheight}{0.9\stockwidth}{*}
+\setlrmarginsandblock{4.5cm}{2cm}{*}
+\setulmarginsandblock{2cm}{1.2cm}{*}
+\checkandfixthelayout
+\setlength{\oddsidemargin}{\evensidemargin}
+
+%non indented paras.
+\setlength{\parindent}{0em}
+\nonzeroparskip
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{ragged2e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     _______. _______   ______ .___________.__    ______   .__   __.   %
+%    /       ||   ____| /      ||           |  |  /  __  \  |  \ |  |   %
+%   |   (----`|  |__   |  ,----'`---|  |----|  | |  |  |  | |   \|  |   %
+%    \   \    |   __|  |  |         |  |    |  | |  |  |  | |  . `  |   %
+%.----)   |   |  |____ |  `----.    |  |    |  | |  `--'  | |  |\   |   %
+%|_______/    |_______| \______|    |__|    |__|  \______/  |__| \__|   %
+%                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setcounter{secnumdepth}{2}
+
+%"hanging" style section formatting
+\makeatletter
+\setsechook{\hangsecnum}
+
+\renewcommand{\hangsecnum}{%
+  \def\@seccntformat##1{%
+    \makebox[0pt][r]{%
+      \sffamily\color{gray}
+      {%
+      \csname the##1\endcsname
+      }
+      \,
+    }%
+  }%
+}
+\makeatother
+
+%section title styling
+\newcommand{\ruledsec}[1]{
+{\sffamily\Large#1} \par
+\vspace{-0.3cm}
+\rule{\textwidth}{0.1pt}
+\vspace{-0.5cm}
+}
+\setsecheadstyle{\ruledsec}
+\setsubsecheadstyle{\sffamily\large}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  ______   ______    __        ______   .______          _______.%
+% /      | /  __  \  |  |      /  __  \  |   _  \        /       |%
+%|  ,----'|  |  |  | |  |     |  |  |  | |  |_)  |      |   (----`%
+%|  |     |  |  |  | |  |     |  |  |  | |      /        \   \    %
+%|  `----.|  `--'  | |  `----.|  `--'  | |  |\  \----.----)   |   %
+% \______| \______/  |_______| \______/  | _| `._____|_______/    %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%main colour for the document
+\definecolor{slategreen}{HTML}{354F52}
+\definecolor{hkgreen}{HTML}{52796F}
+\definecolor{lightslategreen}{HTML}{cadbdc}
+\definecolor{lightslategreenborder}{HTML}{354f52}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  ______  __    __       ___      .______   .___________._______ .______       %
+% /      ||  |  |  |     /   \     |   _  \  |           |   ____||   _  \      %
+%|  ,----'|  |__|  |    /  ^  \    |  |_)  | `---|  |----|  |__   |  |_)  |     %
+%|  |     |   __   |   /  /_\  \   |   ___/      |  |    |   __|  |      /      %
+%|  `----.|  |  |  |  /  _____  \  |  |          |  |    |  |____ |  |\  \----. %
+% \______||__|  |__| /__/     \__\ | _|          |__|    |_______|| _| `._____| %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%custom length to ensure chapter number always is at the leftmost, configure
+%per each chapter. There is probably a better way to do it but, whatever.
+\newlength{\chnumsep}
+\setlength{\chnumsep}{7em}
+
+%hack for custom chapter style. Probably can emulate the green rule with header
+%using a custom chapter style for headers.
+
+% Define custom chapter style
+\makechapterstyle{custom}{
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapternamenum}{}
+\renewcommand*{\chapnumfont}{\chapternumfont\HUGE\color{slategreen}}
+\renewcommand*{\chaptitlefont}{\normalfont\chapnamefontsize\chapterfont\color{black}}
+
+% Adjust spacing
+\setlength{\beforechapskip}{-30pt} % Space before the chapter heading
+\setlength{\midchapskip}{-10pt} % Space between number and title (negative reduces it)
+\setlength{\afterchapskip}{40pt} % Space after the title
+
+   % Red rule spanning the page
+\renewcommand{\chapterheadstart}{
+    \vspace*{-80pt}% Adjust vertical spacing as needed
+    {\hspace*{-22mm}\color{slategreen}\rule{212mm}{25pt}} % Red box spanning the page
+    \vspace{-50pt}
+}
+
+% Printing the chapter, with number in margin.
+\renewcommand*{\printchapternum}{}
+\renewcommand*{\printchaptertitle}[1]{%
+   \vspace{1em}
+   \parbox[t]{\dimexpr0.8\textwidth-4em\relax}{%
+     \vspace{1.2em}\RaggedRight\chaptitlefont ##1%
+   }%
+   \hfill%
+   \rlap{\parbox[c]{5em}{%
+   \begin{adjustwidth}{\chnumsep}{}
+    \RaggedLeft\chapnumfont\thechapter%
+   \end{adjustwidth}
+   \vspace{1.5em}
+    }%
+   }
+   {\color{slategreen}\rule{170mm}{2pt}}
+   \vspace{-40pt}
+ }
+}
+
+\chapterstyle{custom}
+
+%Applying chapter styles
+\makechapterstyle{frontmatter}{% Front matter chapter style
+  \chapterstyle{plain}% Or whatever you consider to be default
+}
+% ===== MAIN MATTER CHAPTER STYLE
+\makechapterstyle{mainmatter}{% Main matter chapter style
+  \chapterstyle{custom}% Or whatever you consider to be default
+}
+% ===== BACK MATTER CHAPTER STYLE
+\makechapterstyle{backmatter}{% Back matter chapter style
+  \chapterstyle{custom}% Backmatter chapterstyle is similar to mainmatter, for appendices.
+}
+
+% Setup styles for frontmatter and backmatter
+\let\oldfrontmatter\frontmatter
+\renewcommand{\frontmatter}{\chapterstyle{frontmatter}\oldfrontmatter}
+\let\oldmainmatter\mainmatter
+\renewcommand{\mainmatter}{\chapterstyle{mainmatter}\oldmainmatter}
+\let\oldbackmatter\backmatter
+\renewcommand{\backmatter}{\chapterstyle{backmatter}\oldbackmatter}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%.______      ___      .______     .___________.%
+%|   _  \    /   \     |   _  \    |           |%
+%|  |_)  |  /  ^  \    |  |_)  |   `---|  |----`%
+%|   ___/  /  /_\  \   |      /        |  |     %
+%|  |     /  _____  \  |  |\  \----.   |  |     %
+%| _|    /__/     \__\ | _| `._____|   |__|     %
+%                                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fmtcount}
+\usepackage{pgfornament}
+
+\renewcommand*{\thepart}{\arabic{part}}
+\renewcommand*{\parttitlefont}{\chapterfont\Huge}
+\renewcommand*{\partnamefont}{\normalfont\scshape\MakeLowercase}
+\renewcommand*{\partnumfont}{\normalfont\scshape\MakeLowercase}
+
+% Part number and seperator
+\renewcommand*{\printpartname}{\LARGE\itshape  Part \thepart\vspace{0.2cm}}
+\renewcommand*{\printpartnum}{}
+
+\renewcommand{\midpartskip}{\vspace*{1cm}\centering
+\hspace*{-1.25cm}\pgfornament[color=slategreen,width=15cm]{87}}
+\renewcommand{\beforepartskip}{\vspace*{\fill}}
+\renewcommand{\afterpartskip}{\vspace*{\fill}}
+
+%for convenience
+\newcommand{\spart}[1]{
+\newgeometry{right=2cm,left=3.7cm,asymmetric}
+\part{#1}
+\restoregeometry
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% __    __   _______     ___       _______   _______ .______          _______.     ___    _______   ______     ______   .___________. _______ .______          _______. %
+%|  |  |  | |   ____|   /   \     |       \ |   ____||   _  \        /       |    /  /   |   ____| /  __  \   /  __  \  |           ||   ____||   _  \        /       | %
+%|  |__|  | |  |__     /  ^  \    |  .--.  ||  |__   |  |_)  |      |   (----`   /  /    |  |__   |  |  |  | |  |  |  | `---|  |----`|  |__   |  |_)  |      |   (----` %
+%|   __   | |   __|   /  /_\  \   |  |  |  ||   __|  |      /        \   \      /  /     |   __|  |  |  |  | |  |  |  |     |  |     |   __|  |      /        \   \     %
+%|  |  |  | |  |____ /  _____  \  |  '--'  ||  |____ |  |\  \----.----)   |    /  /      |  |     |  `--'  | |  `--'  |     |  |     |  |____ |  |\  \----.----)   |    %
+%|__|  |__| |_______/__/     \__\ |_______/ |_______|| _| `._____|_______/    /__/       |__|      \______/   \______/      |__|     |_______|| _| `._____|_______/     %
+%                                                                                                                                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%header and footer for chapter pages
+\copypagestyle{chapter}{plain}
+\makeoddfoot{chapter}{}{}{}
+\makeevenfoot{chapter}{}{}{}
+
+%headfootstyle for part pages
+\copypagestyle{part}{plain}
+\makeoddfoot{part}{}{}{}
+\makeevenfoot{part}{}{}{}
+
+%lower case
+\nouppercaseheads
+
+%for extending into margin
+\setlength{\headwidth}{\textwidth} % should already have this value
+\addtolength{\headwidth}{\marginparsep}
+\addtolength{\headwidth}{\marginparwidth}
+\addtolength{\headwidth}{10em}
+
+%new page style, with headers extending into margins
+\makepagestyle{fullwidth}
+\makerunningwidth{fullwidth}{\headwidth}
+\makeheadposition{fullwidth}{flushleft}{flushleft}{flushleft}{flushleft}
+\makeevenhead{fullwidth}{{\bfseries\thepage}\;\;{\emph{\rightmark}\chapterfont}}{}{}
+\makeoddhead{fullwidth}%
+{}{}{%
+\emph{\leftmark\chapterfont}\;\;\bfseries\thepage}
+
+\pagestyle{fullwidth}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%
+%         _______           _____                    _____                    _____                    _____                    _____
+%        /::\    \         /\    \                  /\    \                  /\    \                  /\    \                  /\    \
+%       /::::\    \       /::\    \                /::\____\                /::\    \                /::\    \                /::\    \
+%      /::::::\    \      \:::\    \              /:::/    /               /::::\    \              /::::\    \              /::::\    \
+%     /::::::::\    \      \:::\    \            /:::/    /               /::::::\    \            /::::::\    \            /::::::\    \
+%    /:::/~~\:::\    \      \:::\    \          /:::/    /               /:::/\:::\    \          /:::/\:::\    \          /:::/\:::\    \
+%   /:::/    \:::\    \      \:::\    \        /:::/____/               /:::/__\:::\    \        /:::/__\:::\    \        /:::/__\:::\    \
+%  /:::/    / \:::\    \     /::::\    \      /::::\    \              /::::\   \:::\    \      /::::\   \:::\    \       \:::\   \:::\    \
+% /:::/____/   \:::\____\   /::::::\    \    /::::::\    \   _____    /::::::\   \:::\    \    /::::::\   \:::\    \    ___\:::\   \:::\    \
+%|:::|    |     |:::|    | /:::/\:::\    \  /:::/\:::\    \ /\    \  /:::/\:::\   \:::\    \  /:::/\:::\   \:::\____\  /\   \:::\   \:::\    \
+%|:::|____|     |:::|    |/:::/  \:::\____\/:::/  \:::\    /::\____\/:::/__\:::\   \:::\____\/:::/  \:::\   \:::|    |/::\   \:::\   \:::\____\
+% \:::\    \   /:::/    //:::/    \::/    /\::/    \:::\  /:::/    /\:::\   \:::\   \::/    /\::/   |::::\  /:::|____|\:::\   \:::\   \::/    /
+%  \:::\    \ /:::/    //:::/    / \/____/  \/____/ \:::\/:::/    /  \:::\   \:::\   \/____/  \/____|:::::\/:::/    /  \:::\   \:::\   \/____/
+%   \:::\    /:::/    //:::/    /                    \::::::/    /    \:::\   \:::\    \            |:::::::::/    /    \:::\   \:::\    \
+%    \:::\__/:::/    //:::/    /                      \::::/    /      \:::\   \:::\____\           |::|\::::/    /      \:::\   \:::\____\
+%     \::::::::/    / \::/    /                       /:::/    /        \:::\   \::/    /           |::| \::/____/        \:::\  /:::/    /
+%      \::::::/    /   \/____/                       /:::/    /          \:::\   \/____/            |::|  ~|               \:::\/:::/    /
+%       \::::/    /                                 /:::/    /            \:::\    \                |::|   |                \::::::/    /
+%        \::/____/                                 /:::/    /              \:::\____\               \::|   |                 \::::/    /
+%         ~~                                       \::/    /                \::/    /                \:|   |                  \::/    /
+%                                                   \/____/                  \/____/                  \|___|                   \/____/
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%hyperref setup
+\usepackage[linktoc=page,hyperfootnotes=false]{hyperref}
+\hypersetup{
+colorlinks=true,
+linkcolor=hkgreen,
+citecolor=hkgreen,
+urlcolor=hkgreen,
+}
+% text styling of all side footnotes
+% styling and placement of mark
+\footmarkstyle{{\itshape#1. }}
+\setlength{\footmarkwidth}{0em}
+\setlength{\footmarksep}{-\footmarkwidth}
+% memoir command - do all footnotes in margin
+\footnotesinmargin
+
+% SIDECAPTIONS
+\setsidecaps{\marginparsep}{\marginparwidth}
+\sidecapmargin{outer}
+\setsidecappos{t}
+\renewcommand*{\sidecapstyle}{%
+\captionnamefont{\scshape}
+\ifscapmargleft
+\captionstyle{\RaggedLeft\footnotesize\foottextfont}%
+\else
+\captionstyle{\RaggedRight\footnotesize\foottextfont}%
+\fi}
+
+\makeatletter
+  \renewcommand{\fnum@figure}{
+  {\small\bfseries\scshape\figurename~\thefigure}}
+\makeatother
+
+\renewcommand{\footnotesize}{\fontsize{10pt}{12pt}\selectfont} % Change footnotesize to 10pt
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                                                                                                                                                %
+%          _____                   _______                   _____                _____                    _____                    _____                _____                    _____          %
+%         /\    \                 /::\    \                 /\    \              /\    \                  /\    \                  /\    \              /\    \                  /\    \         %
+%        /::\    \               /::::\    \               /::\____\            /::\    \                /::\    \                /::\____\            /::\    \                /::\    \        %
+%       /::::\    \             /::::::\    \             /::::|   |            \:::\    \              /::::\    \              /::::|   |            \:::\    \              /::::\    \       %
+%      /::::::\    \           /::::::::\    \           /:::::|   |             \:::\    \            /::::::\    \            /:::::|   |             \:::\    \            /::::::\    \      %
+%     /:::/\:::\    \         /:::/~~\:::\    \         /::::::|   |              \:::\    \          /:::/\:::\    \          /::::::|   |              \:::\    \          /:::/\:::\    \     %
+%    /:::/  \:::\    \       /:::/    \:::\    \       /:::/|::|   |               \:::\    \        /:::/__\:::\    \        /:::/|::|   |               \:::\    \        /:::/__\:::\    \    %
+%   /:::/    \:::\    \     /:::/    / \:::\    \     /:::/ |::|   |               /::::\    \      /::::\   \:::\    \      /:::/ |::|   |               /::::\    \       \:::\   \:::\    \   %
+%  /:::/    / \:::\    \   /:::/____/   \:::\____\   /:::/  |::|   | _____        /::::::\    \    /::::::\   \:::\    \    /:::/  |::|   | _____        /::::::\    \    ___\:::\   \:::\    \  %
+% /:::/    /   \:::\    \ |:::|    |     |:::|    | /:::/   |::|   |/\    \      /:::/\:::\    \  /:::/\:::\   \:::\    \  /:::/   |::|   |/\    \      /:::/\:::\    \  /\   \:::\   \:::\    \ %
+%/:::/____/     \:::\____\|:::|____|     |:::|    |/:: /    |::|   /::\____\    /:::/  \:::\____\/:::/__\:::\   \:::\____\/:: /    |::|   /::\____\    /:::/  \:::\____\/::\   \:::\   \:::\____\%
+%\:::\    \      \::/    / \:::\    \   /:::/    / \::/    /|::|  /:::/    /   /:::/    \::/    /\:::\   \:::\   \::/    /\::/    /|::|  /:::/    /   /:::/    \::/    /\:::\   \:::\   \::/    /%
+% \:::\    \      \/____/   \:::\    \ /:::/    /   \/____/ |::| /:::/    /   /:::/    / \/____/  \:::\   \:::\   \/____/  \/____/ |::| /:::/    /   /:::/    / \/____/  \:::\   \:::\   \/____/ %
+%  \:::\    \                \:::\    /:::/    /            |::|/:::/    /   /:::/    /            \:::\   \:::\    \              |::|/:::/    /   /:::/    /            \:::\   \:::\    \     %
+%   \:::\    \                \:::\__/:::/    /             |::::::/    /   /:::/    /              \:::\   \:::\____\             |::::::/    /   /:::/    /              \:::\   \:::\____\    %
+%    \:::\    \                \::::::::/    /              |:::::/    /    \::/    /                \:::\   \::/    /             |:::::/    /    \::/    /                \:::\  /:::/    /    %
+%     \:::\    \                \::::::/    /               |::::/    /      \/____/                  \:::\   \/____/              |::::/    /      \/____/                  \:::\/:::/    /     %
+%      \:::\    \                \::::/    /                /:::/    /                                 \:::\    \                  /:::/    /                                 \::::::/    /      %
+%       \:::\____\                \::/____/                /:::/    /                                   \:::\____\                /:::/    /                                   \::::/    /       %
+%        \::/    /                 ~~                      \::/    /                                     \::/    /                \::/    /                                     \::/    /        %
+%         \/____/                                           \/____/                                       \/____/                  \/____/                                       \/____/         %
+%                                                                                                                                                                                                %
+%                                                                                                                                                                                                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% redefinitions for part entries
+\renewcommand{\partnumberline}[1]{\mbox{\centering\normalfont\itshape\rmfamily Part ~#1}\par\noindent\large}
+\renewcommand\cftpartafterpnum{\vskip1ex}
+\renewcommand{\printtoctitle}[1]{\hfill\huge\itshape\rmfamily #1}
+
+%two column toc
+\usepackage{multicol}
+
+\makeatletter
+\renewcommand\tableofcontents{%
+\begin{multicols}{2}[
+    \section*{\printtoctitle{\contentsname}}]
+    \@starttoc{toc}%
+\end{multicols}}
+\makeatother
+
+%seperation betwene two columns
+\setlength\columnsep{2em}
+
+\makeatletter
+
+%changing part entries
+\renewcommand{\cftdot}{}
+\renewcommand*{\l@part}[2]{%
+  \ifnum \c@tocdepth >-2\relax
+    \cftpartbreak
+    \begingroup
+      {
+        \setlength{\memRTLleftskip}{0pt}
+        \setlength{\memRTLrightskip}{0pt}
+        \interlinepenalty\@M
+
+        \cftpartfont #1
+        \par
+      }
+      \nobreak
+        \global\@nobreaktrue
+        \everypar{\global\@nobreakfalse\everypar{}}%
+    \endgroup
+  \fi}
+\makeatother
+\renewcommand{\cftpartfont}{\bfseries\sffamily}
+\renewcommand{\cftchaptername}{\normalfont\sffamily Chapter }
+
+\renewcommand{\cftchapterfont}{\bfseries\sffamily}
+
+
+% redefinitions for section entries
+\renewcommand\cftsectionfont{\rmfamily}
+\renewcommand\cftsectionpagefont{\rmfamily\itshape\color{slategreen}}
+\renewcommand{\cftsectionname}{\normalfont\sffamily}
+
+\cftsetindents{section}{2.82em}{2.5em}

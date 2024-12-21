@@ -1,0 +1,195 @@
+%tikz for graphs and mdframed
+\usepackage{tikz}
+%thm tools
+\usepackage{thmtools}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{ifoddpage}
+
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \scalebox{.5}{\import{./}{#1.pdf_tex}}
+}
+
+\makeatletter
+\@mparswitchfalse%
+\setmarginnotes{0.5cm}{4.5cm}{0.2cm}
+\makeatother
+%need framemethod tikz for round corners, https://tex.stackexchange.com/questions/151532/could-not-get-round-corner-working-in-mdframed
+\usepackage[framemethod=TikZ]{mdframed}
+% https://tex.stackexchange.com/a/292090/76888
+% https://github.com/marcodaniel/mdframed/issues/12
+\xpatchcmd{\endmdframed}
+{\aftergroup\endmdf@trivlist\color@endgroup}
+{\endmdf@trivlist\color@endgroup\@doendpe}
+{}{}
+
+%start of chapter box
+\mdfdefinestyle{overviewbox}{%
+    roundcorner=5pt,
+    linewidth=1pt,
+    skipabove=7pt,
+    skipbelow=7pt,
+    innertopmargin=15pt,
+    innerbottommargin=9pt,
+    linecolor=lightslategreenborder,
+    nobreak=true,
+    backgroundcolor=lightslategreen,
+}
+%environment overview for just after chapter stuff. Move this to a new file later.
+\newenvironment{overview}%
+  {\begin{minipage}{170mm}\begin{mdframed}[style=overviewbox]}%
+  {\end{mdframed}\end{minipage}}
+
+%Figure captions
+  \renewcommand{\figurename}{\small\sffamily Fig.}
+
+%dot seperator instead of colon
+  \makeatletter
+  \renewcommand{\@makecaption}[2]{%
+    \vskip\abovecaptionskip
+    \sbox\@tempboxa{#1 { #2}}% Add a period after the figure name
+    \ifdim \wd\@tempboxa >\hsize
+      #1. \RaggedRight #2\par % Apply \RaggedRight here
+    \else
+      \global \@minipagefalse
+      \hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+    \fi
+    \vskip\belowcaptionskip
+  }
+  \makeatother
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%        _____                    _____                    _____                   _______                   _____                    _____                    _____                    _____
+%       /\    \                  /\    \                  /\    \                 /::\    \                 /\    \                  /\    \                  /\    \                  /\    \
+%      /::\    \                /::\____\                /::\    \               /::::\    \               /::\    \                /::\    \                /::\____\                /::\    \
+%      \:::\    \              /:::/    /               /::::\    \             /::::::\    \             /::::\    \              /::::\    \              /::::|   |               /::::\    \
+%       \:::\    \            /:::/    /               /::::::\    \           /::::::::\    \           /::::::\    \            /::::::\    \            /:::::|   |              /::::::\    \
+%        \:::\    \          /:::/    /               /:::/\:::\    \         /:::/~~\:::\    \         /:::/\:::\    \          /:::/\:::\    \          /::::::|   |             /:::/\:::\    \
+%         \:::\    \        /:::/____/               /:::/__\:::\    \       /:::/    \:::\    \       /:::/__\:::\    \        /:::/__\:::\    \        /:::/|::|   |            /:::/__\:::\    \
+%         /::::\    \      /::::\    \              /::::\   \:::\    \     /:::/    / \:::\    \     /::::\   \:::\    \      /::::\   \:::\    \      /:::/ |::|   |            \:::\   \:::\    \
+%        /::::::\    \    /::::::\    \   _____    /::::::\   \:::\    \   /:::/____/   \:::\____\   /::::::\   \:::\    \    /::::::\   \:::\    \    /:::/  |::|___|______    ___\:::\   \:::\    \
+%       /:::/\:::\    \  /:::/\:::\    \ /\    \  /:::/\:::\   \:::\    \ |:::|    |     |:::|    | /:::/\:::\   \:::\____\  /:::/\:::\   \:::\    \  /:::/   |::::::::\    \  /\   \:::\   \:::\    \
+%      /:::/  \:::\____\/:::/  \:::\    /::\____\/:::/__\:::\   \:::\____\|:::|____|     |:::|    |/:::/  \:::\   \:::|    |/:::/__\:::\   \:::\____\/:::/    |:::::::::\____\/::\   \:::\   \:::\____\
+%     /:::/    \::/    /\::/    \:::\  /:::/    /\:::\   \:::\   \::/    / \:::\    \   /:::/    / \::/   |::::\  /:::|____|\:::\   \:::\   \::/    /\::/    / ~~~~~/:::/    /\:::\   \:::\   \::/    /
+%    /:::/    / \/____/  \/____/ \:::\/:::/    /  \:::\   \:::\   \/____/   \:::\    \ /:::/    /   \/____|:::::\/:::/    /  \:::\   \:::\   \/____/  \/____/      /:::/    /  \:::\   \:::\   \/____/
+%   /:::/    /                    \::::::/    /    \:::\   \:::\    \        \:::\    /:::/    /          |:::::::::/    /    \:::\   \:::\    \                  /:::/    /    \:::\   \:::\    \
+%  /:::/    /                      \::::/    /      \:::\   \:::\____\        \:::\__/:::/    /           |::|\::::/    /      \:::\   \:::\____\                /:::/    /      \:::\   \:::\____\
+%  \::/    /                       /:::/    /        \:::\   \::/    /         \::::::::/    /            |::| \::/____/        \:::\   \::/    /               /:::/    /        \:::\  /:::/    /
+%   \/____/                       /:::/    /          \:::\   \/____/           \::::::/    /             |::|  ~|               \:::\   \/____/               /:::/    /          \:::\/:::/    /
+%                                /:::/    /            \:::\    \                \::::/    /              |::|   |                \:::\    \                  /:::/    /            \::::::/    /
+%                               /:::/    /              \:::\____\                \::/____/               \::|   |                 \:::\____\                /:::/    /              \::::/    /
+%                               \::/    /                \::/    /                 ~~                      \:|   |                  \::/    /                \::/    /                \::/    /
+%                                \/____/                  \/____/                                           \|___|                   \/____/                  \/____/                  \/____/
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%for theorems and such, hanging title
+\mdfdefinestyle{mdthmbox}{%
+      roundcorner=4pt,
+      linewidth=1pt,
+      skipabove=12pt,
+      skipbelow=7pt,
+      innertopmargin=9pt,
+      nobreak=true,
+      innerbottommargin=9pt,
+}
+
+  \newlength{\spaceblength}
+  \settowidth{\spaceblength}{\bfseries\ }
+  \declaretheoremstyle[
+      headfont=\bfseries,
+      notefont=\scshape,
+      notebraces={}{\\[\parskip]}, % Braces for additional text
+      bodyfont=\normalfont\itshape,
+      mdframed={style=mdthmbox},
+      headpunct={},
+      headformat={%
+          \checkoddpage\ifoddpage\rlap{\hskip\textwidth\hspace*{2ex}\rmfamily\color{black}\ \ \ \NAME\ \NUMBER}\hskip-\spaceblength{\NOTE}%
+          \else\rlap{\hskip\textwidth\hspace*{2ex}\rmfamily\color{black}\ \ \ \NAME\ \NUMBER}\hskip-\spaceblength{\NOTE}\fi%
+      },
+  ]{hangingtheo}
+
+  %for examples and remarks
+  \mdfdefinestyle{examplebox}{%
+      skipbelow=2pt,
+      skipabove=8pt,
+      linewidth=2pt,
+      innertopmargin=12pt,
+      innerbottommargin=5pt,
+      rightline=false,
+      leftline=true,
+      topline=false,
+      bottomline=false,
+      linecolor=black,
+      backgroundcolor=gray!1,
+  }
+  \declaretheoremstyle[
+  headfont=\bfseries,
+  mdframed={style=examplebox},
+  ]{thmexample}
+
+  \declaretheorem[style=thmexample,name=Example,numberwithin=section]{example}
+  \declaretheorem[style=hangingtheo,name=Theorem,numberwithin=chapter]{theorem}
+  \declaretheorem[style=thmexample,name=Remark,numberwithin=section]{remark}
+
+  \declaretheorem[style=basehead,name=Theorem,numbered=no]{theorem*}
+  \declaretheorem[style=hangingtheo,name=Lemma,numbered=no]{lemma*}
+  \declaretheorem[style=hangingtheo,name=Lemma,sibling=theorem]{lemma}
+
+  \declaretheorem[style=basehead,name=Proposition,numbered=no]{proposition*}
+  \declaretheorem[style=thmexample,name=Corollary,numbered=no]{corollary*}
+  \declaretheorem[style=basehead,name=Proposition,sibling=theorem]{proposition}
+  \declaretheorem[style=thmexample,name=Corollary,sibling=theorem]{corollary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   __________   ___  _______ .______        ______  __       _______. _______     _______.%
+%  |   ____\  \ /  / |   ____||   _  \      /      ||  |     /       ||   ____|   /       |%
+%  |  |__   \  V  /  |  |__   |  |_)  |    |  ,----'|  |    |   (----`|  |__     |   (----`%
+%  |   __|   >   <   |   __|  |      /     |  |     |  |     \   \    |   __|     \   \    %
+%  |  |____ /  .  \  |  |____ |  |\  \----.|  `----.|  | .----)   |   |  |____.----)   |   %
+%  |_______/__/ \__\ |_______|| _| `._____| \______||__| |_______/    |_______|_______/    %
+%                                                                                          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  \usepackage{xsim, needspace}
+
+  \makeatletter
+  \DeclareExerciseEnvironmentTemplate{custom}{%
+    \par\vspace{3.25ex plus 1ex minus .2ex}
+    \Needspace*{3\baselineskip}%
+    \noindent\normalsize
+    \textcolor{black}{%
+      \textbf{\XSIMmixedcase{\GetExerciseName}\nobreakspace\GetExerciseProperty{counter}}%
+    }%
+    \IfInsideSolutionF{%
+      \GetExercisePropertyT{subtitle}{ {\normalfont\itshape\PropertyValue}}%
+    }%
+    \normalsize
+    \GetExercisePropertyT{points}{%
+      \marginpar{%
+          [{\color{teal}\printgoal{\PropertyValue}}]%
+          \GetExercisePropertyT{bonus-points}{~[+\printgoal{\PropertyValue}]}%
+      }%
+    }%
+    \;
+    \@afterindentfalse\@afterheading
+  }
+  {}
+  \makeatother
+
+  \xsimsetup{
+    exercise/the-counter = \arabic{exercise}. ,
+    exercise/template = custom ,
+    solution/template = custom ,
+    exercise/name =
+  }
+
+  \newenvironment{exc}{%
+      ~\\ \rule[0cm]{\textwidth-4cm}{0.01cm}\rule[-0.11cm]{4cm}{0.12cm} \vskip2pt {\hspace*{\textwidth-3.8cm}\Large\textbf{Exercises}}}%
+      {~\\ \hrule ~\\}

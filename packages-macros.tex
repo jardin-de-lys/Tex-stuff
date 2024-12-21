@@ -1,0 +1,203 @@
+\usepackage{dsfont}
+\renewcommand{\mathbb}[1]{\mathds{#1}}
+
+\usepackage{graphicx, calc}
+\usepackage{physics}
+\renewcommand{\dd}{\mathop{}\!{d}}
+\renewcommand{\diffd}{\mathop{}\!{d}}
+
+%for testing font, math
+\usepackage[math]{blindtext}
+
+%use ell instead of l in math mode.
+\mathcode`l="8000
+\begingroup
+\makeatletter
+\lccode`\~=`\l
+\DeclareMathSymbol{\lsb@l}{\mathalpha}{letters}{`l}
+\lowercase{\gdef~{\ifnum\the\mathgroup=\m@ne \ell \else \lsb@l \fi}}%
+\endgroup
+
+\usepackage{xargs}
+\usepackage{centernot}
+\usepackage{mathtools}
+\usepackage{tikz-cd}
+
+\newcommand{\increment}{\Delta}
+
+\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\newcommand{\uvec}[1]{\vec{\hat{#1}}}
+\newcommand{\conj}[1]{\overline{#1}}
+
+\newcommand{\seq}[2]{\left\langle#1_1, #1_2, \dots, #1_{#2}\right\rangle}
+\newcommand{\seqq}[1]{\left\langle#1\right\rangle}
+\newcommand{\colvec}[1]{\langle #1\rangle}
+
+\usepackage{braket}
+\renewcommand*{\Set}[1]{\left\{#1\right\}}
+\newcommand{\given}{\mid}
+\newcommand{\cgiven}{:}
+
+\newcommand{\avg}[1]{\langle#1\rangle}
+\newcommand{\bavg}[1]{\overline{#1}}
+\newcommand{\notiff}{%
+  \mathrel{{\ooalign{\hidewidth$\not\phantom{"}$\hidewidth\cr$\iff$}}}}
+
+\newcommand{\listvec}[2]{\left(#1_{1}, #1_{2}, \dots, #1_{#2}\right)}
+
+\newcommand{\many}[2]{#1_{1}#1_{2}\cdots#1_{#2}}
+\newcommand{\manys}[2]{\{#1_{1},#1_{2}\ldots,#1_{#2}\}}
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\eps}{\varepsilon}
+\providecommand{\alert}{\vocab}
+\providecommand{\half}{\frac{1}{2}}
+\newcommand{\catname}{\mathsf}
+\newcommand{\hrulebar}{
+    \par\hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}
+    \par\nointerlineskip \vspace{\baselineskip}
+}
+\providecommand{\arc}[1]{\wideparen{#1}}
+
+%For use in author command
+\newcommand{\plusemail}[1]{\\ \normalfont \texttt{\mailto{#1}}}
+
+%More commands and math operators
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+
+%Convenient Environments
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof} \hrule}
+\newenvironment{parlist}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+\newenvironment{gobble}{\setbox\z@\vbox\bgroup}{\egroup}
+
+%Inequalities
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
+
+%From H113 "Introduction to Abstract Algebra" at UC Berkeley
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\NNO}{\mathbb N_{0}}
+\newcommand{\ZZO}{\mathbb Z_{\ge 0}}
+\newcommand{\RRO}{\mathbb R_{\ge 0}}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+
+\newcommand{\charin}{\text{ char }}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL} % General linear group
+\DeclareMathOperator{\SL}{SL} % Special linear group
+\DeclareMathOperator{\Vol}{Vol} % Special linear group
+
+%From Kiran Kedlaya's "Geometry Unbound"
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\newcommand{\ray}[1]{\overrightarrow{#1}}
+\newcommand{\seg}[1]{\overline{#1}}
+
+\newcommand{\comp}[1]{\widebar{#1}}
+\newcommand{\ndiv}[1]{\dot{#1}}
+\newcommand{\nddiv}[1]{\ddot{#1}}
+
+%From M275 "Topology" at SJSU
+\DeclareMathOperator{\id}{id}
+\newcommand{\taking}[1]{\xrightarrow{#1}}
+\newcommand{\inv}{^{-1}}
+
+%From M170 "Introduction to Graph Theory" at SJSU
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\ord}{ord}
+\newcommand{\defeq}{\overset{\mathrm{def}}{=}}
+
+%From the USAMO .tex files
+\newcommand{\ts}{\textsuperscript}
+\newcommand{\dg}{^\circ}
+\newcommand{\ii}{\item}
+
+% From Math 55 and Math 145 at Harvard
+\newenvironment{subproof}[1][Proof]{%
+    \begin{proof}[#1] \renewcommand{\qedsymbol}{$\blacksquare$}}%
+    {\end{proof}}
+
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\lthen}{\rightarrow}
+
+\DeclareMathOperator{\Img}{Im} % Image
+\DeclareMathOperator{\coker}{coker} % Cokernel
+\DeclareMathOperator{\Coker}{Coker} % Cokernel
+\DeclareMathOperator{\Ker}{Ker} % Kernel
+\DeclareMathOperator{\Spec}{Spec} % spectrum
+\DeclareMathOperator{\pr}{pr} % projection
+\DeclareMathOperator{\ext}{ext} % extension
+\DeclareMathOperator{\pred}{pred} % predecessor
+\DeclareMathOperator{\dom}{dom} % domain
+\DeclareMathOperator{\ran}{ran} % range
+\DeclareMathOperator{\Hom}{Hom} % homomorphism
+\DeclareMathOperator{\Mor}{Mor} % morphisms
+\DeclareMathOperator{\End}{End} % endomorphism
+
+% Things Lie
+\newcommand{\kb}{\mathfrak b}
+\newcommand{\kg}{\mathfrak g}
+\newcommand{\kh}{\mathfrak h}
+\newcommand{\kn}{\mathfrak n}
+\newcommand{\ku}{\mathfrak u}
+\newcommand{\kz}{\mathfrak z}
+\DeclareMathOperator{\Ext}{Ext} % Ext functor
+\DeclareMathOperator{\Tor}{Tor} % Tor functor
+\newcommand{\SC}{\mathcal{S}}
+\newcommand{\SCF}{\mathscr F}
+\newcommand{\SCG}{\mathscr G}
+\newcommand{\SCH}{\mathscr H}
+
+% Mathfrak primes
+\newcommand{\km}{\mathfrak m}
+\newcommand{\kp}{\mathfrak p}
+\newcommand{\kq}{\mathfrak q}
+
+
+%aliases
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\subset}{\subsetneq}
+\newcommand{\auth}[1]{\emph{#1}}
+\newcommand{\para}[1]{#1 \par}
+\newcommand{\lpara}[1]{\par}
+\newcommand{\parbreak}{\smallskip}
+
+%nice aliases
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\im}{\mathrm{\iota}}
+
+%nicer re and im
+\renewcommand*{\Re}{\mathfrak{R}}
+\renewcommand*{\Im}{\mathfrak{I}}
+
+%for indexing
+\newcommand{\vocab}[1]{{\itshape#1}\index{#1}}
+\newcommand{\tpvocab}[2]{{\itshape#2}\index{#1!#2}}
+
+%quicker macro
+\newcommand{\dtp}{\dotproduct}
+
+%spacing and euler's number
+\newcommand{\e}{\,{\mathrm{e}}}
+\renewcommand{\dd}{\mathop{}\!{d}}
+\renewcommand{\diffd}{\mathop{}\!{d}}
