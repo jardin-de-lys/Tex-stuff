@@ -1,7 +1,7 @@
 The readme describes the usage of the preamble files used for all the documents. It doesn't particularly
 describe each of the documents themselves. 
 
-> [!IMPORTANT]
+> [!Caution]
 > All of the latex files are meant to be compiled in LuaLatex. They use fontspec for custom fonts, so they cannot be used using pdflatex.
 > They probably work in XeLatex, though I haven't tested them.
 
