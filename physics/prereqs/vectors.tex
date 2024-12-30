@@ -1,0 +1,44 @@
+\setlength{\chnumsep}{14em}
+\chapter{Vectors}
+
+\begin{overview}
+In this chapter we'll give an introduction to vectors, and some results in
+geometry that you may find useful. Vectors are not introduced rigorously here,
+but we do use some facts from linear algebra.
+\end{overview}
+
+\section{Co-ordinate Free Vectors}
+
+We first describe vectors as being co-ordinate free. And really, even
+though we will introduce co-ordinates later, you should still
+think of vectors as just existing out somewhere, with our without
+co-ordinates.
+
+\begin{marginfigure}
+\incfig{freevector}
+\caption{A directed line segment, the vector \(\vec{A}\).}
+\end{marginfigure}
+
+You can think of a \index{vector} vector as a \emph{directed line segment}.
+Vectors are usually denoted using boldface, \(\vec{A}\) or with an arrow over its name,
+\(\ovec{A}\). We'll use the former, though the latter is often used when writing by hand.
+
+
+Because they're directed line segments, only their length matters and
+we’re not concerned with the location of their end points. This means that a
+vector can be freely translated, without altering it.
+
+\begin{marginfigure}
+\scalebox{1.8}{\incfig{translatedvector}}
+\caption{Two identical vectors.}
+\end{marginfigure}
+
+The magnitude of the vector is its length, which we call it's \tpvocab{Vector}{norm}, and write
+as \(\norm{\vec{A}}\) or simply \(A\). You may also see it being written as \(\abs{\vec{A}}\).
+
+A unit vector, \(\uvec{\gamma}\) (“gamma hat”) is a vector whose magnitude is unity. We use the unit vector to
+often denote the direction of a vector by multiplying the unit vector with its magnitude.
+For instance, the unit vector that point is the direction of \(\vec{A}\), \(\uvec{A}\) can be calculated as,
+\[
+\uvec{A} = \frac{\vec{A}}{A}.
+\]
