@@ -1,5 +1,5 @@
+promys/
 rough/
-.vscode/
 **/*.loe
 **/*.xsim
 **/*.bbl-*
@@ -11,7 +11,6 @@ rough/
 **/*.ptc1
 **/*.ind
 **/*.out
-**/*.pdf
 **/*.ptc2
 **/*.ptc3
 **/*.out.ps

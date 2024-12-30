@@ -11,7 +11,7 @@
 
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
-    \scalebox{.5}{\import{./}{#1.pdf_tex}}
+    \scalebox{.5}{\import{../figures/}{#1.pdf_tex}}
 }
 
 \makeatletter
@@ -133,9 +133,16 @@
   mdframed={style=examplebox},
   ]{thmexample}
 
+  \declaretheoremstyle[
+  headfont=\bfseries,
+  mdframed={style=examplebox},
+  bodyfont=\small,
+  ]{thmremark}
+
   \declaretheorem[style=thmexample,name=Example,numberwithin=section]{example}
   \declaretheorem[style=hangingtheo,name=Theorem,numberwithin=chapter]{theorem}
-  \declaretheorem[style=thmexample,name=Remark,numberwithin=section]{remark}
+  \declaretheorem[style=thmremark,name=Remark,numberwithin=section]{remark}
+  \declaretheorem[style=hangingtheo,name=Problem,numberwithin=chapter]{question}
 
   \declaretheorem[style=basehead,name=Theorem,numbered=no]{theorem*}
   \declaretheorem[style=hangingtheo,name=Lemma,numbered=no]{lemma*}

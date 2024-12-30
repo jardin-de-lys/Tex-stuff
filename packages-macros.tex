@@ -1,6 +1,6 @@
 \usepackage{dsfont}
 \renewcommand{\mathbb}[1]{\mathds{#1}}
-
+\usepackage{cleveref}
 \usepackage{graphicx, calc}
 \usepackage{physics}
 \renewcommand{\dd}{\mathop{}\!{d}}
@@ -22,10 +22,12 @@
 \usepackage{centernot}
 \usepackage{mathtools}
 \usepackage{tikz-cd}
+\usepackage{cancel}
 
+\newcommand{\ovec}[1]{\overrightarrow{\mathrm{#1}}}
 \newcommand{\increment}{\Delta}
-
-\renewcommand{\vec}[1]{\boldsymbol{\mathbf{#1}}}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\vec}[1]{\mathbf{\boldsymbol{#1}}}
 \newcommand{\uvec}[1]{\vec{\hat{#1}}}
 \newcommand{\conj}[1]{\overline{#1}}
 
