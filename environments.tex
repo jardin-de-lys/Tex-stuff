@@ -14,6 +14,7 @@
     \scalebox{.5}{\import{../figures/}{#1.pdf_tex}}
 }
 
+%for one side margins
 \makeatletter
 \@mparswitchfalse%
 \setmarginnotes{0.5cm}{4.5cm}{0.2cm}
@@ -45,7 +46,7 @@
   {\end{mdframed}\end{minipage}}
 
 %Figure captions
-  \renewcommand{\figurename}{\small\sffamily Fig.}
+  \renewcommand{\figurename}{\small\sffamily {Figure}}
 
 %dot seperator instead of colon
   \makeatletter
@@ -114,24 +115,47 @@
       },
   ]{hangingtheo}
 
+  
   %for examples and remarks
   \mdfdefinestyle{examplebox}{%
       skipbelow=2pt,
       skipabove=8pt,
-      linewidth=2pt,
-      innertopmargin=12pt,
+      linewidth=1pt,
+      innertopmargin=-4pt,
+      innerleftmargin=12pt,
       innerbottommargin=5pt,
       rightline=false,
-      leftline=true,
-      topline=false,
+      leftline=false,
+      topline=true,
       bottomline=false,
       linecolor=black,
-      backgroundcolor=gray!1,
+      backgroundcolor=coolbeige,
   }
+
+  \definecolor{goodpurple}{HTML}{420024}
+  \definecolor{coolbeige}{HTML}{F5F6F4}
+
   \declaretheoremstyle[
-  headfont=\bfseries,
-  mdframed={style=examplebox},
+    headfont=\bfseries\color{coolbeige}\large,
+    headformat={%
+    \colorbox{slategreen}{\hspace{0mm}\textcolor{coolbeige}{\ \ \ \textsc{\NAME}\ \NUMBER}\hspace{4mm}}
+    },          % Title font and color
+    notefont=\normalfont,                    % Font for the optional note
+    headpunct={~\\ ~\\ },                            % No punctuation after the title
+    headindent=-12pt,                          % No indentation for the title
+    postheadspace=10pt,                       % No space after the title
+    spaceabove=10pt,                         % Space above the theorem box
+    spacebelow=10pt,                         % Space below the theorem box
+    mdframed={style=examplebox},
   ]{thmexample}
+
+
+
+  %\declaretheoremstyle[
+  %headfont=\bfseries,
+  %mdframed={style=examplebox},
+  %headpunct={~\\ ~\\},
+  %]{thmexample}
 
   \declaretheoremstyle[
   headfont=\bfseries,
@@ -139,7 +163,7 @@
   bodyfont=\small,
   ]{thmremark}
 
-  \declaretheorem[style=thmexample,name=Example,numberwithin=section]{example}
+  \declaretheorem[style=thmexample,name=Example,numberwithin=chapter]{example}
   \declaretheorem[style=hangingtheo,name=Theorem,numberwithin=chapter]{theorem}
   \declaretheorem[style=thmremark,name=Remark,numberwithin=section]{remark}
   \declaretheorem[style=hangingtheo,name=Problem,numberwithin=chapter]{question}
@@ -200,3 +224,6 @@
   \newenvironment{exc}{%
       ~\\ \rule[0cm]{\textwidth-4cm}{0.01cm}\rule[-0.11cm]{4cm}{0.12cm} \vskip2pt {\hspace*{\textwidth-3.8cm}\Large\textbf{Exercises}}}%
       {~\\ \hrule ~\\}
+
+
+

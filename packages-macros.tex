@@ -1,10 +1,13 @@
 \usepackage{dsfont}
 \renewcommand{\mathbb}[1]{\mathds{#1}}
-\usepackage{cleveref}
-\usepackage{graphicx, calc}
+\usepackage{cleveref, float}
+\usepackage{graphicx, calc, subcaption}
+\usepackage{emoji, enumitem}
 \usepackage{physics}
-\renewcommand{\dd}{\mathop{}\!{d}}
-\renewcommand{\diffd}{\mathop{}\!{d}}
+\usepackage{tcolorbox}
+\usepackage[activate={true,nocompatibility},factor=1100,stretch=10,shrink=10]{microtype}
+\microtypecontext{spacing=nonfrench}  % silence warning
+\tcbuselibrary{skins}
 
 %for testing font, math
 \usepackage[math]{blindtext}
@@ -51,7 +54,7 @@
 \newcommand{\manys}[2]{\{#1_{1},#1_{2}\ldots,#1_{#2}\}}
 \newcommand{\cbrt}[1]{\sqrt[3]{#1}}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
-\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
 \newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
 \newcommand{\ol}{\overline}
 \newcommand{\ul}{\underline}
@@ -205,5 +208,12 @@
 \renewcommand{\diffd}{\mathop{}\!{d}}
 
 %sidenotes
-
 \newcommand{\sidenote}[1]{\marginpar{#1}}
+%monofont too large
+\renewcommand{\UrlFont}{\ttfamily\scriptsize}
+
+%for nicer question mark character
+\newfontface\qmfont{Cormorant Garamond} % Define the font for the question mark
+
+% Redefine the question mark to use Latin Modern Roman font
+\newcommand{\?}{{\qmfont ?}} 

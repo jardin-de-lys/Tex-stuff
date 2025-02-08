@@ -41,11 +41,26 @@
 %main font
 \setmainfont{Fanwood}[
   BoldFont={EB Garamond SemiBold},
-  Numbers=Lining
+  Numbers=Lining,
+  Renderer=Basic
 ]
 %sans font, for section headings.
 \setsansfont{Jost Light}[
   BoldFont={Jost Medium},
+]
+%mono font
+\setmonofont{JetBrainsMono}[
+  Extension      = .ttf,
+  UprightFont    = JetBrainsMonoNl-Light,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
+]
+%for some reason too large
+\newfontfamily\JBMmdfamily{JetBrainsMono}[
+  Extension      = .ttf,
+  UprightFont    = JetBrainsMonoNl-Light,
+  ItalicFont     = *-Italic,
+  BoldFont       = *-Bold,
 ]
 
 %importing integral, sum, and partial symbol from mtpro2
@@ -66,6 +81,7 @@
 
 %redefinitions because they were acting weird
 \renewcommand{\Large}{\fontsize{15}{20}\selectfont}
+\renewcommand{\large}{\fontsize{12}{20}\selectfont}
 \renewcommand{\LARGE}{\fontsize{22}{40}\selectfont}
 \renewcommand{\huge}{\fontsize{30}{60}\selectfont}
 \renewcommand{\Huge}{\fontsize{40}{60}\selectfont}
@@ -152,13 +168,13 @@
 
 %section title styling
 \newcommand{\ruledsec}[1]{
-{\sffamily\Large#1} \par
+{\sffamily\color[HTML]{29383D}\Large#1} \par
 \vspace{-0.3cm}
 \rule{\textwidth}{0.1pt}
 \vspace{-0.5cm}
 }
 \setsecheadstyle{\ruledsec}
-\setsubsecheadstyle{\sffamily\large}
+\setsubsecheadstyle{\sffamily\color[HTML]{29383D}\large}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  ______   ______    __        ______   .______          _______.%
@@ -323,10 +339,10 @@
 \makepagestyle{fullwidth}
 \makerunningwidth{fullwidth}{\headwidth}
 \makeheadposition{fullwidth}{flushleft}{flushleft}{flushleft}{flushleft}
-\makeevenhead{fullwidth}{{\bfseries\thepage}\;\;{\emph{\rightmark}\chapterfont}}{}{}
+\makeevenhead{fullwidth}{{\bfseries\thepage}\;\;{\color{gray} | }\;\;{\emph{\rightmark}\chapterfont}}{}{}
 \makeoddhead{fullwidth}%
 {}{}{%
-\emph{\leftmark\chapterfont}\;\;\bfseries\thepage}
+\emph{\leftmark\chapterfont}\;\;{\color{gray} | }\;\;\bfseries\thepage}
 
 \pagestyle{fullwidth}
 
@@ -473,3 +489,7 @@ urlcolor=hkgreen,
 \renewcommand{\cftsectionname}{\normalfont\sffamily}
 
 \cftsetindents{section}{2.82em}{2.5em}
+
+\setsidecappos{t}
+\sidecapmargin{right}
+\setsidecaps{1cm}{4cm}
