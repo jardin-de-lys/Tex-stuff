@@ -42,3 +42,57 @@ For instance, the unit vector that point is the direction of \(\vec{A}\), \(\uve
 \[
 \uvec{A} = \frac{\vec{A}}{A}.
 \]
+
+Further, vectors have certain operations defined on them. The base operations
+are \tpvocab{Vector}{Scalar Multiplication} and \tpvocab{Vector}{Vector Addition}.
+
+\subsection{Scalar Multiplication}  
+
+Scalar Multiplication refers to multiplying a vector by a \vocab{scalar}. A scalar
+for our purposes refers to a real number. Consider a vector \(\vec{v}\).
+Multiplying it by a scalar, \(\alpha \in \RR\) produces a vector 
+\(\alpha\vec{v}\) parallel to the original vector and changes the magnitude of the vector so that
+\(\norm{\alpha\vec{v}}\) is \(\abs{\alpha}\) times greater than \(\norm{\vec{v}}\), thus
+\(\norm{\alpha \vec{v}} = \abs{\alpha}\norm{\vec{v}}\). \(\abs{\alpha}\) can 
+be smaller or greater than \(1\) which accordingly increases/decreases the 
+lenght of \(\vec{v}\).
+
+\begin{marginfigure}
+  \centering
+  \scalebox{1.5}{\incfig{scalar multiplication}}
+  \caption{Scalar multiplication of a vector \(\vec{A}\) by \(c > 1\) and \(-1\).}
+\end{marginfigure}
+
+If \(\alpha > 0\), the vector produced is in the same direction as the original vector. If
+\(\alpha < 0\), the direction of the vector is reversed. 
+
+\subsection{Vector Addition}
+
+Adding two vectors, \(\vec{A}\) and \(\vec{B}\) produces another 
+vector \(\vec{A + B}\). Geometrically, vector addition is done by placing
+the tail of \(\vec{B}\) on the head of \(\vec{A}\), and then the vector joining
+the tail of \(\vec{A}\) and head of \(\vec{B}\) is the vector \(\vec{A + B}\) as 
+in \cref{subfig: vectoradd1}.
+
+It can also be interpreted as the diagonal of the parallelogram made by placing
+the tails of the two vectors together, and producing two sides parallel to them as 
+show in \cref{subfig: vectoradd2}.
+
+\begin{marginfigure}
+  \centering
+  \begin{subfigure}[t]{\marginparwidth}
+    \scalebox{1.5}{\incfig{vectoradd1}}
+  \caption{Adding vectors, parallelogram interpretation.}
+  \label{subfig: vectoradd1}
+  \end{subfigure}
+  \begin{subfigure}[t]{\marginparwidth}
+    \scalebox{1.2}{\incfig{vectoradd2}}
+  \caption{Adding vectors, triangle interpretation.}
+  \label{subfig: vectoradd2}
+  \end{subfigure}
+  \caption{Addition of two vectors, \(\vec{A}\) and \(\vec{B}\) produces another
+  vector, \(\vec{A + B}\).}
+\end{marginfigure}
+
+Subtraction of vectors, \(\vec{A} - \vec{B}\) is equivalent to multiplying \(\vec{B}\) 
+by \(-1\) and then adding it with \(\vec{A}\).
