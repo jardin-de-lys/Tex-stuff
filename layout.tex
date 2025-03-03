@@ -39,11 +39,12 @@
 \usepackage{fontspec}
 
 %main font
-\setmainfont{Fanwood}[
-  BoldFont={EB Garamond SemiBold},
-  Numbers=Lining,
-  Renderer=Basic
-]
+%\setmainfont{Fanwood}[
+%  BoldFont={EB Garamond SemiBold},
+%  Numbers=Lining,
+%  Renderer=Basic
+%]
+\setmainfont{Baskerville}
 %sans font, for section headings.
 \setsansfont{Jost Light}[
   BoldFont={Jost Medium},
@@ -286,12 +287,12 @@
 \usepackage{pgfornament}
 
 \renewcommand*{\thepart}{\arabic{part}}
-\renewcommand*{\parttitlefont}{\chapterfont\Huge}
+\renewcommand*{\parttitlefont}{\normalfont\itshape\Huge}
 \renewcommand*{\partnamefont}{\normalfont\scshape\MakeLowercase}
 \renewcommand*{\partnumfont}{\normalfont\scshape\MakeLowercase}
 
 % Part number and seperator
-\renewcommand*{\printpartname}{\LARGE\itshape  Part \thepart\vspace{0.2cm}}
+\renewcommand*{\printpartname}{\LARGE  Part \thepart\vspace{0.2cm}}
 \renewcommand*{\printpartnum}{}
 
 \renewcommand{\midpartskip}{\vspace*{1cm}\centering

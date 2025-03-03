@@ -8,13 +8,13 @@ describe each of the documents themselves.
 # Dependencies
 
 A working tex installation is needed to use the template. Aside from that, some fonts need to be installed
-for using the template. All the fonts used are free, so you can download them, if you wish.
+for using the template. All the fonts except Baskerville are free, so you can download them, if you wish.
 
 The fonts used are listed in the table below.
 
 | Font        | Use Case         |
 |-------------|------------------|
-| [Fanwood](https://www.theleagueofmoveabletype.com/fanwood)     | Body font        |
+| Baskerville | Body font        |
 | [EB Garamond](https://fonts.google.com/specimen/EB+Garamond) | Body font, bold. |
 | [Jost](https://indestructibletype.com/Jost.html)        | Headings         |
 | [Riesling](https://www.dafont.com/riesling.font)    | Heading Numbers  |
