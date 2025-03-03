@@ -7,7 +7,11 @@
 \usepackage{pdfpages}
 \usepackage{transparent}
 \usepackage{ifoddpage}
-
+\usepackage{tcolorbox}
+\tcbset{on line, 
+        boxsep=3pt, left=0pt,right=0pt,top=0pt,bottom=0pt,
+        colframe=slategreen,colback=slategreen,arc=1pt,outer arc=1pt
+        }
 
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
@@ -136,9 +140,9 @@
   \definecolor{coolbeige}{HTML}{F5F6F4}
 
   \declaretheoremstyle[
-    headfont=\bfseries\color{coolbeige}\large,
+    headfont=\bfseries\color{coolbeige}\normalsize,
     headformat={%
-    \colorbox{slategreen}{\hspace{0mm}\textcolor{coolbeige}{\ \ \ \textsc{\NAME}\ \NUMBER}\hspace{4mm}}
+    \tcbox{\hspace{-2.3mm}\textcolor{coolbeige}{\ \ \ \textsc{\NAME}\ \NUMBER}}
     },          % Title font and color
     notefont=\normalfont,                    % Font for the optional note
     headpunct={~\\ ~\\ },                            % No punctuation after the title
@@ -162,6 +166,9 @@
   mdframed={style=examplebox},
   bodyfont=\small,
   ]{thmremark}
+
+  \declaretheorem[style=hangingtheo,name=Definition,numberwithin=chapter]{definition}
+
 
   \declaretheorem[style=thmexample,name=Example,numberwithin=chapter]{example}
   \declaretheorem[style=hangingtheo,name=Theorem,numberwithin=chapter]{theorem}
