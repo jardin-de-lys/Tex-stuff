@@ -34,12 +34,23 @@ Vectors are usually denoted using boldface, \(\vec{A}\).
 
 Because they're directed line segments, only their length matters and
 we’re not concerned with the location of their end points. This means that a
-vector can be freely translated, without altering it.
+vector can be freely translated, without altering it. An equivalent way to say 
+this is that two vectors are equal iff their magnitude is equal, and they have the
+same direction (i.e. they're parallel).
 
 \begin{marginfigure}
-\scalebox{1.8}{\incfig{translatedvector}}
-\caption{Two identical vectors.}
-\end{marginfigure}
+  \scalebox{1.8}{\incfig{translatedvector}}
+  \caption{Two identical vectors.}
+  \end{marginfigure}
+
+Also, we define a vector field, which is a special sort of function, that'll be relevant 
+for future discussions.
+
+\begin{definition}
+  A \vocab{Vector Field} is a vector \(\vec{B}\) which is a function of position, \(\vec{B}(\vec{r}) = \vec{B}(x, y, z)\). 
+\end{definition}
+
+Where the position of a point \(P\) refers to the vector from the origin \(\mathcal{O}\) to the point, \(P\).
 
 The magnitude of the vector is its length, which we call it's \tpvocab{Vector}{norm}, and write
 as \(\norm{\vec{A}}\) or simply \(A\). You may also see it being written as \(\abs{\vec{A}}\).
@@ -84,7 +95,12 @@ in \cref{subfig: vectoradd1}.
 
 It can also be interpreted as the diagonal of the parallelogram made by placing
 the tails of the two vectors together, and producing two sides parallel to them as 
-show in \cref{subfig: vectoradd2}.
+show in \cref{subfig: vectoradd2}. 
+
+From this we may interpret that vector addition is commutative, that is, 
+\(\vec{A + B} = \vec{B + A}\). We can also deduce that its associative,
+\(\vec{A} + (\vec{B} + \vec{C}) = (\vec{A} + \vec{B}) + \vec{C}\). I'll 
+recommend convincing yourself of this using geometrical constructions.
 
 \begin{marginfigure}
   \centering
@@ -105,17 +121,6 @@ show in \cref{subfig: vectoradd2}.
 Subtraction of vectors, \(\vec{A} - \vec{B}\) is equivalent to multiplying \(\vec{B}\) 
 by \(-1\) and then adding it with \(\vec{A}\).
 
-\section{Introducing Co-ordinates}
+If \(\norm{\vec{v}} = 0\), we write \(\vec{v} = \vec{0}\). 
 
-There are an infinite number of vectors in 3d space, of course,
-but that makes it harder to deal with them. Since vectors 
-are just lengths with some direction, could we perhaps assign them 
-co-ordinates? 
-
-
-Consider a plane, \(P\), and two non-parallel vectors in it,
-\(\vec{v}\), \(\vec{w}\). Suppose we wanted 
-
-\begin{example}
-  For example \(\vec{e}_x = (1, 0)\) and \(\vec{e}_y = (0, 1)\) form a basis of \(\RR^2\).
-\end{example}
+\subsection{Scalar Product}
