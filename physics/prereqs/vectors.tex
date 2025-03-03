@@ -3,23 +3,33 @@
 
 \begin{overview}
 In this chapter we'll give an introduction to vectors, and some results in
-geometry that you may find useful. Vectors are not introduced rigorously here,
-but we do use some facts from linear algebra.
+geometry that you may find useful. We'll first introduce them geometrically, then
+give a rigorous algebraic treatment of them. Vectors are very useful quantities,
+that will aid us all the way to Quantum Mechanics, so being familiar with them will aid you 
+a lot. 
 \end{overview}
 
-\section{Co-ordinate Free Vectors}
 
-We first describe vectors as being co-ordinate free. And really, even
-though we will introduce co-ordinates later, you should still
-think of vectors as just existing out somewhere, with or without
-co-ordinates.
+\section{Geometrical Vectors}
+
+We will somewhat loosely follow the vectors chapter from \url{https://www.damtp.cam.ac.uk/user/sjc1/teaching/VandM/notes.pdf}.
+
+
+We first describe vectors in a geometrical fashion. This isn't in anyway rigorous, and we won't 
+pretend it is. We'll give some proofs, but you may need to take a leap of faith in some places.
 
 \begin{marginfigure}
 \incfig{freevector}
 \caption{A directed line segment, the vector \(\vec{A}\).}
+\label{fig: freevector}
+\vspace{4em}
 \end{marginfigure}
 
-You can think of a \index{vector} vector as a \emph{directed line segment}.
+\begin{definition}
+  A \vocab{Vector} is a quantity described by a magnitude and a direction in space. They're
+  represented as line segments, as in \cref{fig: freevector}.  
+\end{definition}
+You can think of a vector as a \emph{directed line segment}.
 Vectors are usually denoted using boldface, \(\vec{A}\). 
 
 Because they're directed line segments, only their length matters and
