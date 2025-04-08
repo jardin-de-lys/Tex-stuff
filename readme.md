@@ -15,7 +15,6 @@ The fonts used are listed in the table below.
 | Font        | Use Case         |
 |-------------|------------------|
 | Baskerville | Body font        |
-
 | [Jost](https://indestructibletype.com/Jost.html)        | Headings         |
 | [Riesling](https://www.dafont.com/riesling.font)    | Heading Numbers  |
 
