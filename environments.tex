@@ -97,12 +97,23 @@
 \mdfdefinestyle{mdthmbox}{%
       roundcorner=4pt,
       linewidth=1pt,
-      skipabove=12pt,
+      skipabove=10pt,
       skipbelow=7pt,
       innertopmargin=9pt,
       nobreak=true,
       innerbottommargin=9pt,
 }
+
+\mdfdefinestyle{mdquesbox}{%
+      roundcorner=4pt,
+      linewidth=1pt,
+      skipabove=10pt,
+      skipbelow=7pt,
+      innertopmargin=9pt,
+      nobreak=true,
+      innerbottommargin=9pt,
+}
+
 
   \newlength{\spaceblength}
   \settowidth{\spaceblength}{\bfseries\ }
@@ -110,7 +121,7 @@
       headfont=\bfseries,
       notefont=\scshape,
       notebraces={}{\\[\parskip]}, % Braces for additional text
-      bodyfont=\normalfont\itshape,
+      bodyfont=\normalfont,
       mdframed={style=mdthmbox},
       headpunct={},
       headformat={%
@@ -119,21 +130,36 @@
       },
   ]{hangingtheo}
 
-  
+  \declaretheoremstyle[
+      headfont=\bfseries,
+      notefont=\scshape,
+      notebraces={}{\\[\parskip]}, % Braces for additional text
+      bodyfont=\normalfont\itshape,
+      mdframed={style=mdquesbox},
+      headpunct={},
+      headformat={%
+          \checkoddpage\ifoddpage\rlap{\hskip\textwidth\hspace*{2ex}\rmfamily\color{black}\ \ \ \NAME\ \NUMBER}\hskip-\spaceblength{\NOTE}%
+          \else\rlap{\hskip\textwidth\hspace*{2ex}\rmfamily\color{black}\ \ \ \NAME\ \NUMBER}\hskip-\spaceblength{\NOTE}\fi%
+      },
+  ]{hangingques}
+
+
   %for examples and remarks
   \mdfdefinestyle{examplebox}{%
       skipbelow=2pt,
+      roundcorner=2pt,
       skipabove=8pt,
       linewidth=1pt,
-      innertopmargin=-4pt,
-      innerleftmargin=12pt,
+      innertopmargin=-4.1pt,
+      innerleftmargin=10pt,
       innerbottommargin=5pt,
       rightline=false,
-      leftline=false,
+      leftline=true,
       topline=true,
       bottomline=false,
-      linecolor=black,
+      linecolor=slategreen,
       backgroundcolor=coolbeige,
+      nobreak=false
   }
 
   \definecolor{goodpurple}{HTML}{420024}
@@ -146,7 +172,7 @@
     },          % Title font and color
     notefont=\normalfont,                    % Font for the optional note
     headpunct={~\\ ~\\ },                            % No punctuation after the title
-    headindent=-12pt,                          % No indentation for the title
+    headindent=-10.1pt,                          % No indentation for the title
     postheadspace=10pt,                       % No space after the title
     spaceabove=10pt,                         % Space above the theorem box
     spacebelow=10pt,                         % Space below the theorem box
@@ -160,10 +186,24 @@
   %mdframed={style=examplebox},
   %headpunct={~\\ ~\\},
   %]{thmexample}
+  \mdfdefinestyle{rembox}{%
+  skipbelow=2pt,
+  skipabove=8pt,
+  linewidth=1pt,
+  innertopmargin=10pt,
+  innerleftmargin=12pt,
+  innerbottommargin=10pt,
+  rightline=false,
+  leftline=false,
+  topline=true,
+  bottomline=false,
+  linecolor=black,
+  backgroundcolor=coolbeige,
+}
 
   \declaretheoremstyle[
   headfont=\bfseries,
-  mdframed={style=examplebox},
+  mdframed={style=rembox},
   bodyfont=\small,
   ]{thmremark}
 
@@ -173,7 +213,7 @@
   \declaretheorem[style=thmexample,name=Example,numberwithin=chapter]{example}
   \declaretheorem[style=hangingtheo,name=Theorem,numberwithin=chapter]{theorem}
   \declaretheorem[style=thmremark,name=Remark,numberwithin=section]{remark}
-  \declaretheorem[style=hangingtheo,name=Problem,numberwithin=chapter]{question}
+  \declaretheorem[style=hangingques,name=Question,numbered=no]{question}
 
   \declaretheorem[style=basehead,name=Theorem,numbered=no]{theorem*}
   \declaretheorem[style=hangingtheo,name=Lemma,numbered=no]{lemma*}
@@ -210,7 +250,7 @@
     }%
     \normalsize
     \GetExercisePropertyT{points}{%
-      \marginpar{%
+      \hfill {%
           [{\color{teal}\printgoal{\PropertyValue}}]%
           \GetExercisePropertyT{bonus-points}{~[+\printgoal{\PropertyValue}]}%
       }%
@@ -222,15 +262,15 @@
   \makeatother
 
   \xsimsetup{
-    exercise/the-counter = \arabic{exercise}. ,
+    exercise/the-counter = \thesection.\arabic{exercise}. ,
     exercise/template = custom ,
     solution/template = custom ,
-    exercise/name =
-  }
+    exercise/name = 
+}
 
   \newenvironment{exc}{%
       ~\\ \rule[0cm]{\textwidth-4cm}{0.01cm}\rule[-0.11cm]{4cm}{0.12cm} \vskip2pt {\hspace*{\textwidth-3.8cm}\Large\textbf{Exercises}}}%
-      {~\\ \hrule ~\\}
+      {\bigskip \hrule}
+    
 
-
-
+\newcommand{\sidenote}[1]{\reversemarginpar \marginnote{#1} \normalmarginpar}
