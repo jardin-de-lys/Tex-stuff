@@ -15,11 +15,10 @@ The fonts used are listed in the table below.
 | Font        | Use Case         |
 |-------------|------------------|
 | Baskerville | Body font        |
-| [EB Garamond](https://fonts.google.com/specimen/EB+Garamond) | Body font, bold. |
+
 | [Jost](https://indestructibletype.com/Jost.html)        | Headings         |
 | [Riesling](https://www.dafont.com/riesling.font)    | Heading Numbers  |
 
-EB Garamond (in particular the Semibold font) is used because fanwood does not have bold characters. 
 
 Aside from this the package `newtxmath` is used for times based math fonts. `mtp2lite` is also used for importing some symbols (in particular, 
 the really nice partial symbol), so a working installation of that is needed too. To install them on linux, [this guide](https://github.com/jamespfennell/mathtime-installer) 
