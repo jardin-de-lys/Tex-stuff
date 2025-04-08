@@ -1,0 +1,27 @@
+\input{../layout.tex}
+\input{../environments.tex}
+\input{../packages-macros.tex}      
+
+\author{Lilian}
+\date{\today}
+\title{A foray into physics}
+\begin{document}
+
+\frontmatter
+\pagestyle{empty}
+\newgeometry{left=4cm, right=2cm}
+\tableofcontents
+\restoregeometry
+
+\mainmatter
+\pagestyle{fullwidth}
+
+\spart{Prerequisites}
+\input{prereqs/vectors.tex}
+\input{prereqs/math.tex}
+
+\spart{Mechanics}
+\input{mech/kin.tex}
+
+
+\end{document}

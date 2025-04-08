@@ -1,0 +1,862 @@
+\setlength{\chnumsep}{10em}
+\chapter{Kinematics}
+
+
+\begin{overview}
+    Kinematics is the study of motion without any concern to its cause. It introduces us with the 
+    basic quantities that will used throughout physics. While there's not that much physical content in this 
+    topic, it stands as quite an important topic in mechanics. Once you've solved the dynamic equations, all 
+    that's left is kinematics.
+        \end{overview}
+
+\section{The Physical Quantities}
+
+\subsection{Frames and Particles}
+
+Motion of any object is considered to relative to an observer. The observer defines a
+particular co-ordinate system called the reference frame.
+
+\begin{definition}
+    A \vocab{Reference Frame} is a co-ordinate frame which can be moving or rotating, with respect to 
+    which we measure the physical quantities.
+\end{definition}
+
+There are some things that depend on our choice of reference frame, and some that
+don't. We'll have a look at using reference frames to deal with some questions
+later. 
+
+\begin{marginfigure}
+    \vspace{-5em}
+    \scalebox{2}{\incfig{reference-frame}}
+    \caption{A cartesian reference frame}
+\end{marginfigure}
+
+
+Typically, we either use cartesian or curvilinear co-ordinates (spherical, cylindrical). 
+We'll have a look at the 2d versions of both in this chapter, especially plane polar-coordinates 
+(2d versions of cylindrical co-ordinates).
+
+We usually deal with either point particles, or rigid bodies.  You might think a point 
+particle is not really a physically meaningful thing. However, we can
+approximate bodies, when their size is \emph{not} meaningful to their
+motion, as particles to a very good precision. 
+
+\begin{definition}
+    A \vocab{Point Particle} is a particle whose size is negligible in the study of its motion.
+\end{definition}
+
+We'll later discuss extended bodies, and in particular rigid ones in mechanics, but initially this idea 
+of point particles will carry us far. 
+
+\subsection{Position and Displacement}
+
+To describe the position of the particle, we use a position vector. A position vector is an example of a 
+\emph{vector field}, about which we'll have much to say in electromagnetism and gravitation.
+
+\begin{definition}
+    The \emph{position vector}, $\vec{r}(x, y, z)$, of the particle refers to the vector drawn from the origin to the particle.
+\end{definition}
+
+
+In \cref{fig: position}, the position vector of $A$ is $\vec{r}_A = x\ihat + y\jhat + z\khat$, where 
+$\ihat$ is the unit vector along the $x$ axis, $\jhat$ the unit vector along the $y$ axis and $\khat$ is 
+the one along the $z$ axis.
+
+As you may notice, this is dependent on our origin. The position vector is not quite
+a true vector, it's more so a relative quantity. Anyway, it is still plenty useful,
+if we just remember to adjust it when switching to a different reference frame.
+
+\begin{marginfigure}
+    \hspace{-1.2em}\scalebox{2.5}{\incfig{positionvec}}
+    \caption{A position vector $\vec{r}_A = (x, y, z)$} 
+    \label{fig: position}
+\end{marginfigure}
+
+The other thing of importance is \emph{Displacement}. 
+The \index{Displacement} \emph{Displacement}, $\vec{s}_{AB}$ from $A$ to $B$, is $\vec{s}_{AB} \equiv \vec{r}_B - \vec{r}_A$.
+
+We need two points to define the displacement. Also, unlike position, displacement 
+is not changed by using a rotated or translated reference frame. 
+
+Note that displacement is not the property of the path, which is the \emph{distance}. For a path 
+of the form $y(x)$, to calculate the distance between $A$ and $B$, we need to calculate $\dd{\ell} = 
+\sqrt{\dd{x}^2 + \dd{y}^2} = \sqrt{(\dv*{y}{x})^2 + 1}\dd{x}$ which is the \vocab{arc length}.
+$\dd{\ell}$ is just the infinitesmal length of the path, which by pythagoras is equal to $\sqrt{\dd{y}^2 + \dd{x}^2}$.  
+
+Doing this integral, we get,
+\begin{equation}
+    \ell = \int_A^B \sqrt{(y'(x))^2 + 1} \dd{x}.
+\end{equation}
+
+This is the distance. For euclidian geometry, it is also obvious that since displacement is the line joining 
+$A$ and $B$, the magnitude of displacement is lower than the length of any path joining $A$ and $B$. Thus,
+$\norm{\vec{s}} \le \ell$. 
+
+\subsection{Velocity And Acceleration}
+
+And now we can start by considering the quantities we have heard about frequently
+in our daily life, velocity and acceleration. Velocity refers to how the position
+vector changes with time, while acceleration refers to how velocity changes with time.
+So, acceleration is the second derivative of position. 
+
+You might wonder why we don't consider higher derivatives, and the answer to that lies in the 
+fact that newton's laws give us a second order differential equation, so the only 
+quantities of concern are till the second derivative of position.
+
+Let's now formally define these quantities.
+
+\begin{definition}
+    \textit{Velocity} is defined as the time rate of change of position, i.e. $\vec{v} \equiv \dot{\vec{r}}$.
+
+    \textit{Acceleration} is defined as the time rate of change of velocity, i.e. $\vec{a} \equiv \dot{\vec{v}} = \ddot{\vec{r}}$. 
+\end{definition}
+
+\sidenote{$\dot{x}$ refers to the derivative of $x$ with respect to time. $\ddot{x}$ refers to the second derivative of $x$ with respect 
+to time. `$\equiv$' stands for defined as.}
+
+\begin{remark}
+    Some quick remarks. Position is a function of time, and to find said function
+    is the aim of mechanics. We call the function the \textit{trajectory} of the 
+    particle. There are some constraints on the function, for example it must have 
+    a continuous first, second derivative. 
+
+    Similar, velocity and accelerations are also functions of time. Notably as you can
+    see from their definitions, they're defined at a particular time, the derivative
+    evaluated at some time, $t$. This is different from things like \textit{average velocity}, which is a property of motion in a finite time interval, explicitly,
+    \begin{equation}
+        \vec{v}_{\text{avg}} = \vec{\bar{v}} \equiv \frac{\vec{r}(t_2) - \vec{r}(t_1)}{t_2 - t_1}.
+    \end{equation}
+
+    And in the limit $t_2 \to t_1$, this becomes the velocity. The case for acceleration
+    is the same.
+
+    Speed at a time $t$ is the magnitude of velocity at that time. It is always greater
+    than or equal to $0$. In the case of average speed, it is defined as the \textit{distance} the particle travels over the
+    time interval in which it travels that distance. 
+
+    When the time interval goes to $0$, the distance becomes the displacement, or atleast the magnitude of 
+    it. Thus, speed is the magnitude of velocity at that point. 
+    Also, don't confuse between $\norm{\dv*{\vec{r}}{t}}$ and $\dv*{\norm{\vec{r}}}{t}$, the first is speed, 
+    the other is a quantity not at all useful.
+\end{remark}
+
+The velocity is a map,
+$$
+\vec{v}\colon \mathbb{R} \to \mathbb{R}^3
+$$
+similar to position, which maps time to its three components,
+$$
+t \mapsto (v_x(t), v_y(t), v_z(t)).
+$$
+
+Based on the definition of acceleration,
+\begin{equation}
+    \int \dd{\vec{v}} = \int \vec{a}\dd{t} \implies \vec{v} = \vec{v}_0 + \int \vec{a} \dd{t}.        
+\end{equation}
+
+Similarly,
+\begin{equation}
+    \vec{r} = \vec{r}_0 + \int \vec{v} \dd{t}.
+\end{equation}
+
+If acceleration is a function of position, which it often is, we can use a neat trick, at least when 
+every thing is one dimension,
+$$
+a = \dv{v}{t} = \dv{v}{t} \dv{x}{x} = \dv{v}{x} \dv{x}{t} \implies a = v \dv{v}{x}.
+$$
+For constant acceleration, this gives us, $v^2 = v_0^2 + 2a\Delta x$, which is also the statement of work-energy 
+theorem, which we'll encounter later. 
+
+You can generalise this to any function, $f$,
+\begin{equation}
+f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
+\end{equation}
+
+\begin{example}
+    Consider the motion of an object dropped from a height $h$, under 
+    drag. The acceleration due to gravity is $\vec{g} = -g \hat{\vec{j}}$ and due to drag is of the form $-\alpha v \hat{\vec{v}}$. This is 
+    called linear drag. Since the object is falling down, $\hat{\vec{v}} = -\hat{\vec{j}}$.
+
+    Based on the definition of acceleration, 
+    $$
+    \dv{v}{t} = - g + \alpha v \iff \int_0^{-v_f} \frac{\dd{v}}{\alpha v - g} = \int_0^{t} \dd{t'}
+    $$
+    where we set the final velocity to $-v_f$ since its negative, and rename $t$ to $t'$ since we'll use it as our dummy variable, and $t$ as the limit of integration.
+
+    This can be solved using a simple u-sub, and is left as an exercise
+    to the reader. The final solution is,
+    $$v_f = \frac{g}{\alpha} (e^{\alpha t} - 1).$$
+\end{example}
+
+\section{Projectile Motion}
+
+    Projectile Motion is a very famous setup in physics, and especially kinematic
+    problems. Though the setup is not extremely physically interesting, there's a 
+    number of things you can learn from it. We'll cover a lot of cool tricks through
+    problems, but let's first explore what this setup even is.
+
+    When an object, called a \textit{projectile}, is thrown with some velocity $v$ 
+    making some angle with the horizontal, $\theta$, from co-ordinates $(X, Y)$,
+    under the effect of gravity, the motion is called projectile motion.
+
+    There are a no. of things in this setup that can teach you a fair bit. For one,
+    this is our first actual two dimensional problem. We have two free co-ordinates,
+    $x$ and $y$. First of all, Let's choose our co-ordinate system so that $X = 0$. 
+    We won't choose $Y = 0$ because that corresponds to a real thing, namely the ground.
+    It is more convenient to just leave it be.
+
+    First, let's discuss the special case $Y = 0$, that is, projectile is released from
+    ground. This setup should be enough for you to be able to generalise it to $Y = h$.
+    Anyway, gravity acts in the negative y direction, $\vec{g} = -g \jhat$, where $g = 9.81$ m/s. How do we proceed now? Well, we know $\vec{a}(t)$ so we should probably try to find $\vec{v}(t)$. Let's try that,
+    $$
+    \dot{\vec{v}} = \vec{g} \implies \vec{v}(t) = \vec{v}_0 +\vec{g}t,
+    $$
+    Where we use $\vec{v}(0) = \vec{v}_0$, the initial velocity as the limit of integration.
+    $$
+    \dot{\vec{r}} = \vec{v}_0 + \vec{g}t \implies \vec{r} = \vec{r}_0 + \vec{v}_0t + \frac{1}{2} \vec{g}t^2.
+    $$
+    
+    Since $\vec{r}_0 = (X, Y) = (0, 0) = \vec{0}$, we just have,
+    $$
+    \vec{r}(t) = \vec{v}_0t + \frac{1}{2} \vec{g}t^2.
+    $$
+
+    Now here's where the neat part begins. As a general rule of thumb, it's always
+    harder to deal with vectors than it is with scalars, so we will see various
+    methods of trying to convert a vector problem into a scalar problem, and then
+    re-converting if needed. In this case, we make use of a very important, but almost
+    trivial looking identity,
+    $$\text{if } a\ihat + b\jhat = c\ihat + d\jhat, \text{then } a = c, b = d.$$
+
+    How do we prove this? Well lets move things around a little, 
+    $$
+    (a-c)\ihat = (d-b)\jhat
+    $$
+    Oh, but this cannot be true since $\ihat, \jhat$ are the basis for $\mathbb{R}^2$ so they're linearly independent. Thus, either $a = b$, or $c = d$. Now you can complete the proof by using the uniqueness of $0$. A fancier way to do this is just 
+    dot both sides with $\ihat$ and then $\jhat$, I'll leave that proof to you.
+
+    Now, if $\vec{v}_0$ makes an angle $\theta$ with horizontal, 
+    $$
+    \vec{v}_0 = v_0\cos\theta \ihat + v_0\sin\theta \jhat,
+    $$
+    And plugging this into the vector equation for $\vec{v}(t)$, and using $\vec{v}(t) = v_x \ihat + v_y \jhat$ we get,
+    \begin{equation}
+        v_x = v_0\cos\theta, \quad v_y = v_0\sin\theta - gt        
+    \end{equation}    
+
+    And using the vector equation for $\vec{r}(t) = x\ihat + y\jhat$,
+    \begin{equation}
+        x = v_0t\cos\theta, \quad y = v_0t\sin\theta - \frac{1}{2}gt^2.        
+    \end{equation}
+    
+    We have reduced the vector equations to scalar equations! Now this is very easy
+    to deal with, you can derive almost everything by just bashing using these equations.
+    That's of course not always the nicest idea, and we'll learn some tricks to deal with them. Also, you might have notice that for each vector equation, we get two scalar
+    equations. We actually get three, since we live in 3d space, but the components of 
+    the vector along $\khat$ are just $0$, so it doesn't matter.
+
+    The last fundamental equation of importance is the \textit{trajectory} equation,
+    how does the motion actually look in 2d space? That is, we need to find $y(x)$.
+    You can do it by using $t = x/v_0\cos\theta$, and substituting this in the $y(t)$
+    equation, which you should verify, gives you,
+    \begin{equation}
+        y(x) = x\tan\theta - \frac{x^2g}{2v_0^2\cos^2\theta}.        
+    \end{equation}
+    
+    Now we can use this for a bunch of problems. Now that we know the general shape is a parabola,
+    let's try to find some properties of it. As you can see, the parabola opens downards, so it
+    achieves a maximum. What is that maximum? Well, you could try to find where $\dv*{y}{x}$ is 0,
+    and then see what happens. 
+    
+    A nicer way is to realise that $v_y$ must be 0 at max height. If this were not so, 
+    we could have moved to $H_{\text{max}} + \epsilon$ in time $t = \epsilon/v_y$. If the velocity were 
+    negative at, and thus just before $H_{\text{max}}$, we could have never reached the max height.
+
+    Using this, we get that,
+    \begin{equation}
+        H_{\text{max}} = \frac{v_{0y}^2}{2g} = \boxed{\frac{v_0^2\sin^2\theta}{2g}.}
+    \end{equation}
+
+    What about the range(the max value of $x$)? We have a maximum, since after $y = 0$ (after $t > 0$ that is), the projectile cannot
+    move further, because it has encountered the ground. 
+    
+    Well, we can use the equation for $y$ to
+    find $t$, or just note that the parabola is symmetric about $y = H_{\text{max}}$, so $t_{\text{total}} = t_H$ where $t_H$ is the time to reach $H_{\text{max}}$, or 
+    equivalently, when $v_y = 0$, which you can find easily. All of them give the same time, which when plug into the equation for $x$, we get
+    \begin{equation}
+        \boxed{R = \frac{v_0^2\sin2\theta}{g}}.    
+    \end{equation}
+
+    What is the maximum value of $R$, the range, for a fixed velocity? Think about we can vary. Well, $\theta$ of course, and its easy to see the maximum occurs for $\theta = \pi/4$,
+    so we \textit{optimise} the range, and say its maximum at $\theta = \pi/4$. 
+
+    \begin{marginfigure}
+        \hspace{-3.7em}
+        \scalebox{3.9}{\incfig{wedge-projectile}}
+        \caption{Projectile grazing a wedge}
+    \end{marginfigure}
+
+    \begin{example}
+        A projectile is thrown from one vertex of a wedge grazes the other vertex, and ends up on the third vertex. 
+        It is thrown with an initial velocity $v_0$ making an angle $\theta$ with the horizontal. 
+        If the angles of the vertices are $\alpha$ and $\beta$, figure out a relation 
+        between $\tan \theta$, $\tan \alpha$ and $\tan \beta$.
+
+        \begin{soln}
+            Divide the range of the projectile into two lengths, $x$ and $x'$ such that $x + x' = R$. Now, clearly,
+            \[
+            \tan \alpha = \frac{y_0}{x} \qquad \tan \beta = \frac{y_0}{x'}
+            \]
+            
+            Also, by the alternate equation of trajectory,
+            \[
+            y_0 = x \tan \theta \left(1 - \frac{x}{R} \right) = x \tan \theta \left(1 - \frac{x}{x + x'} \right)
+            \]
+            
+            Which gives us,
+            \[
+            \tan \theta = y_0 \left( \frac{x + x'}{x x'} \right) = \frac{y_0}{x} + \frac{y_0}{x'}
+            \]
+            
+            Finally substituting the values, we get,
+            \[
+            \tan \theta = \tan \alpha + \tan \beta
+            \]
+        \end{soln}
+
+    \end{example}
+    
+    There are two important properties of projectile motion. One is more general, and that is that for 
+    classical mechanics, motion is time-reversible. That is, if we do the transformation $t \to -t$, the motion 
+    doesn't change. The idea is that the acceleration remains invariant, and the velocity reverses, so the trajectory 
+    is the same, for forces of the form $F(x)$. We will say more about this later, when newton's laws are introduced, but 
+    till then you can use it as a fact.
+
+    The second is that the time to attain some vertical displacement can be found in terms of the maximum height alone,
+    in fact the motion is independent of range. 
+
+    Consider the vertical position of the particle to be $s$ at some time $t$. Then,
+    \begin{equation*}
+        s = u_y t - \frac{1}{2}gt^2
+    \end{equation*}
+
+    Also, note that if the maximum height is $h$,
+    \begin{equation*}
+        u_y = \pm \sqrt{2gh}
+    \end{equation*}
+
+    Where the positive value is during the ascent and the negative is during the descent. Then,
+    \begin{equation*}
+        s = \pm \sqrt{2gh}t - \frac{1}{2}gt^2
+    \end{equation*}
+
+    Solving for $t$ gives us,
+    \begin{equation}
+        t = \pm \sqrt{\frac{2h}{g}} \pm \sqrt{\frac{2(h - s)}{g}}
+    \end{equation}
+
+    If the initial velocity is positive and $s > 0$,
+    \begin{equation}
+        t = \sqrt{\frac{2h}{g}} \pm \sqrt{\frac{2(h - s)}{g}} 
+    \end{equation}
+    the two values correspond to the fact that the particle will have the same vertical displacement at two instances of time.
+
+    If the initial velocity is positive but $s < 0$, i.e., the particle starts at some height but then transverses below it,
+    \begin{equation}
+        t = \sqrt{\frac{2h}{g}} + \sqrt{\frac{2(h - s)}{g}} 
+    \end{equation}
+    is the only reasonable solution.
+
+    If the initial velocity is negative, then clearly the particle will attain a lower position. The maximum height in this case is simply the initial height of the particle.
+    \begin{equation}
+        t = -\sqrt{\frac{2h}{g}} + \sqrt{\frac{2(h - s)}{g}} 
+    \end{equation}
+
+    Thus qualitatively, projectile motion is independent of its horizontal range. 
+    If some projectiles have the same maximum height, their time of flight \textit{will be the same}.
+
+    \begin{marginfigure}
+        \hspace{-3em}
+        \vspace{-3em}
+        \scalebox{5}{\incfig{projectile-vec}}
+        \caption{Projectile with Vectors}
+        \label{fig: projectile-vec}
+    \end{marginfigure}
+
+    \begin{marginfigure}
+        \hspace{-3.2em}
+        \vspace{-2em}
+        \scalebox{3.7}{\incfig{wedge-projectile-distance}}
+        \caption{Projectile on tilted ground}
+        \label{fig: projectile-titled-ground}
+    \end{marginfigure}
+
+    \begin{exc}
+        
+            \begin{exercise}[subtitle={Projectile with Vectors.}, points = 3]
+            \\
+            We can integrate the kinematic equations vectorially, to get
+
+            \[
+            \mathbf{v}(t) = \mathbf{v}_0 + \mathbf{g}t,
+            \]
+            
+            and for the displacement,
+            \[
+            \mathbf{s}(t) = \mathbf{v}_0 t + \frac{1}{2} \mathbf{g} t^2.
+            \]
+            
+            \begin{enumerate}
+                \item[(a)] Show that these two equations are, in fact true. Justify our integration of a vector when 
+                discussing velocity and acceleration. \emph{Hint: How can we integrate a vector? Try to use its components.}
+            
+                \item[(b)] Note that the vectors $\mathbf{v}_0 t$, $\mathbf{g} t^2 / 2$ are parallel to vector $\mathbf{v}_0$ and $\mathbf{g}$ respectively. 
+                Use this to find the range and time of flight. \textit{Hint: You will find \cref{fig: projectile-vec} useful.}
+            \end{enumerate}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Projectile Motion in tilted axes.}, points = 3, ID=projectile-tilted]
+            \\
+            Consider the case of a projectile launched along tilted ground (or a wedge), as in, fig.~3.7. 
+            If we were to figure out $d$, we could use a number of ways. The equation of the projectile is,
+            \[
+            y = x \tan(\theta + \alpha) - \frac{g x^2}{2 v_0^2 \cos^2(\theta + \alpha)}
+            \]
+
+            and of the wedge is,
+            \[
+            y = x \tan \theta
+            \]
+
+            We could simply equate them to figure out the distance $d$, which is the range of the projectile. 
+            However, let us look at alternate way of doing this, using tilted axis. This is the first time 
+            we're using the \emph{transformation} of our reference frame. There are many more to come after this.
+
+            \begin{enumerate}
+                \item[(a)] Rotate the axes by the angle of inclination of the wedge, $\theta$, so that the $x$ axis 
+                lies along the plane, and $y$ axis perpendicular to it. Now, find the kinematic equations along the two axes.
+
+                \item[(b)] Solve these to find the time at which the projectile hits the wedge, and the distance it travels.
+            \end{enumerate}
+            \label{exc: projectile-tilted}
+        \end{exercise}
+    \end{exc}
+
+
+    \section{Polar Co-ordinates}
+
+    The polar co-ordinate axes are the two-dimensional subset of the 3-d cylindrical co-ordinates. Any point 
+    in polar co-ordinates is depicted by a system of two unit vectors, $\rhat$ and 
+    $\that$. However, each of these are dependent on the 
+    position of the particle and may be written as $\rhat(\theta)$ 
+    and $\that(\theta)$.
+
+    \begin{marginfigure}
+        \hspace{-5em}
+        \vspace{-3em}
+        \scalebox{4}{\incfig{polar-coords}}
+        \caption{Polar-coordinates}
+        \label{fig: polar}
+    \end{marginfigure}
+
+    Here, $\rhat$ points in the direction of increasing radius 
+    (along the radial vector), and $\that$ points in the 
+    direction of increasing $\theta$ (tangent to the radial vector). 
+    These two unit vectors are \textit{orthogonal} at any point.
+
+    In \cref{fig: polar}, if $\rhat$ makes an angle $\theta$ with the 
+    horizontal, then,
+    \begin{subequations}
+        \label{eqn: polaruvec}
+        \begin{alignat}{2}
+            \rhat &= \cos\theta \ihat + \sin\theta \jhat \\
+            \that &= -\sin\theta \ihat + \cos\theta \jhat         
+        \end{alignat}
+    \end{subequations}
+    Which follows by adding projections of $\ihat$ and $\jhat$ along the radial and tangential directions.
+
+    Now let us formulate kinematics in polar co-ordinates. The 
+    position vector $\vec{r}$ can be written as
+    \begin{equation}
+    \vec{r} = r \rhat
+    \end{equation}
+
+    Velocity follows normally,
+    \begin{equation*}
+    \vec{v} = \dv{\vec{r}}{t} = \dot{r} \rhat + r 
+    \dv{\rhat}{t} 
+    \end{equation*}
+
+    Or does it? What even is $\dv*{\rhat}{t}$? The answer 
+    lies in the time-derivative of the unit vectors. Using the 
+    definitions in \cref{eqn: polaruvec}, we get:
+    \begin{subequations}
+        \begin{alignat}{2}
+            \dv{\rhat}{t} &= \dot{\theta} \that  \\
+            \dv{\that}{t} &= -\dot{\theta} \rhat         
+        \end{alignat}
+    \end{subequations}
+
+    Using these results, we get that
+    \begin{align}
+    \vec{v} &= \dot{r} \rhat + r \dot{\theta} \that \\
+    \vec{a} &= (\ddot{r} - r \dot{\theta}^2) \rhat + 
+    (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \that 
+    \end{align}
+
+    The most interesting result is the various terms of 
+    acceleration in (3.32). First, let us consider the terms along 
+    $\rhat$. The term $\ddot{r}$ is the \textit{radial 
+    acceleration}. It is the change in the radial speed (and thus 
+    the radius). The second term $-r\dot{\theta}^2$ is the 
+    \textit{centripetal acceleration}. This term accounts for 
+    change in direction of tangential velocity and is responsible 
+    for the particle’s curved path.
+
+    Now consider the terms along $\that$. The term 
+    $r \ddot{\theta}$ is the \textit{tangential acceleration} due 
+    to change in tangential speed:
+    \[
+    a_t = r \ddot{\theta} = \dot{v}
+    \]
+
+    The other term $2 \dot{r} \dot{\theta}$ is the 
+    \textit{coriolis acceleration}, which we’ll discuss with 
+    rotating frames.
+
+    \begin{example}
+        The movement of a particle in a circle about some point is called circular motion. If we move to the 
+        origin, $r$ does not change with time. Thus, $\dot{r} = \ddot{r} = 0$. This gives us $v = \dot{\theta}r$. 
+        $dot{\theta}$ is often refered to as the \vocab{Angular Speed}, $\omega$. We also find that
+        $a_r = -m\omega^2r$ and $a_\theta = r\ddot{\theta}$. If $\ddot{\theta} = 0$, then the motion is called 
+        uniform circular motion, and the acceleration is perpendicular to the velocity.   
+    \end{example}
+
+\section{Optimization Problems}
+    These are a class of math problems with almost no physics involved. The following problem, for instance, is a purely
+    geometrical one. These problems rely on tricks, and can be fun puzzles.
+    \begin{question}
+        A man who can run at a constant speed stands at a point with coordinates $(4, 5)$ and has to walk to the $x$-axis, then to the point $(3, 7)$. What path must the man walk along?
+    \end{question}
+
+    A large subset of these questions can be done purely by calculus, but that is not always the most elegant way to go 
+    about it. We'll cover questions of both kinds, sometimes you do need to do the effort and the elegant solution
+    may not be so elegant.
+
+    \begin{example}
+        \label{ex: max-wedge-projectile}
+        Consider a projectile thrown with a velocity $v_0$ making an angle $\alpha$ with horizontal, on wedge of inclination 
+        $\theta$, which slopes downwards. Find out the angle $\alpha$ such that the projectile has maximum range.
+
+        \begin{soln}
+            The locus of the projectile is,
+            \[
+            y = x \tan \alpha - \frac{g x^2}{2 v_0^2 \cos^2 \alpha}
+            \]
+            and of the wedge is,
+            \[
+            y = -x \tan \theta
+            \]
+                    
+            At the range, they will be equal so,      
+            \[
+            x \tan \alpha - \frac{g x^2}{2 v_0^2 \cos^2 \alpha} = 
+            -x \tan \theta 
+            \Longrightarrow \tan \alpha + \tan \theta = 
+            \frac{g x}{2 v_0^2 \cos^2 \alpha}
+            \]
+            which gives us the desired range,      
+            \[
+            x = \frac{2 v_0^2 (\tan \alpha + \tan \theta) 
+            \cos^2 \alpha}{g}
+            \]
+                    
+            So the condition for maximum range is simply,
+            \[
+            \dv{x}{\alpha} = 0.
+            \]
+            This also kind of illustrates a nice idea, since we need to get 
+            the derivative 0, we can safely discard any multiplicative or 
+            additive constants right away which will either have a zero 
+            differentiation, or can be divided by since the other side of 
+            the equation is simply 0.
+                    
+            We get that,
+            \begin{align*}
+                &\dv{}{\alpha} \left\{ 
+                    (\tan \alpha + \tan \theta) \cos^2 \alpha 
+                \right\} = 0 \\
+                &\dv{}{\alpha} \left\{ 
+                    \frac{\sin 2\alpha}{2} + \tan \theta 
+                    \cos^2 \alpha 
+                \right\} = 0 \\
+                &\cos 2\alpha - \tan \theta \sin 2\alpha = 0 \\
+                &\tan 2\alpha = \cot \theta \\
+                &\tan 2\alpha = \tan\left( \frac{\pi}{2} - \theta \right) \\
+                \implies &\alpha = \frac{\pi}{4} - \frac{\theta}{2}
+                \end{align*}
+             \end{soln}
+             
+             An easier way to find $x$ is to use \Cref{exc: projectile-tilted}, and then we can continue in the same
+             manner.
+    \end{example}
+    
+
+    \begin{marginfigure}
+        \hspace{-1em}
+        \scalebox{2.5}{\incfig{fermat-principle}}
+        \caption{One of the possible paths to reach from $A$ to $B$.} 
+    \end{marginfigure}
+
+    \begin{example}
+        A man can run at a speed $u$ and swim at a speed $v$. In the following diagram, 
+        the man starts at point $A$ and has to save his friend from drowning at point $B$. 
+        Assuming he likes his friend, what should he do? 
+
+        \begin{soln}
+            The man should call a lifeguard. Now, let's figure out how the lifeguard should run from point $A$ to $B$.
+            The time taken to reach the man is: 
+            \[
+                t = \frac{\sqrt{x^2 + h^2}}{u} + \frac{\sqrt{(d-x)^2 + h'^2}}{v}
+            \]
+            where $d$ is the horizontal distance between $A$, $B$, and $h$, $h'$ is vertical 
+            distance of $A$ and $B$ to the shore hence independent of the path taken.
+
+            The derivative of this with respect to the $x$ has to be $0$ for the best path of the lifeguard:
+            \[
+                \frac{x}{u\sqrt{x^2 + h^2}} = \frac{(d-x)}{v\sqrt{(d-x)^2 + h'^2}}
+            \]
+            But $\sin\alpha = x/\sqrt{x^2 + h^2}$ and $\sin\beta = (d-x)/\sqrt{(d-x)^2 + h'^2}$, so we have,
+            \begin{equation}
+            \boxed{\frac{u}{\sin\alpha} = \frac{v}{\sin\beta}}
+            \end{equation}
+        \end{soln}
+    \end{example}
+
+    This path follows the laws of refraction. In fact, this hints at a more general result for light, 
+    that being that it follows the path of least time. This is called Fermat's principle.
+     Of course, we don't care about what light does at this point, but it is a very cool 
+     result. Note for one that we paid no attention to which reference frame we were talking about, and it 
+     doesn't matter (unless its rotation).
+
+    As you may notice, the principle doesn't really depend on what the media or distances are,
+    in fact this is a general result.  
+
+    A beautiful application of this principle is the Brachistochrone problem, which is given at the end of this section. 
+
+    We'll see this idea in the problems, but when the accelerations or velocities are complicated, but it is often helpful 
+    to consider the \emph{velocity space} or the position space, which is just the vector space of all velocities, instead 
+    of our usual position space.
+
+    \begin{example}
+        A bug wishes to jump over a cylindrical log of radius $R$ lying on the ground, so that it just
+        grazes the top of the log horizontally as it passes by. What is the minimum launch speed $v$
+        required to do this?
+
+        \begin{soln}
+            First of all, since the the bug grazes the top of the log horziontally, $v_y$ at the top is just 
+            $0$. Since $v^2 = v_0^2 - 2gh$, this implies that $v_{0,y} = \sqrt{2gh}$. Now we just need to find $v_x$.
+            
+            The idea here is of radius of curvature. If $v_x$ is too low, the
+            trajectory of the bug will just pass through the log. If it's too high, our velocity is not minimal. 
+            At the most optimal trajectory, the \emph{curvature} of the trajectory is the same as that of the log, so
+            the bug is doing circular motion at the top of the log with radius $r$. Using polar-cordinates, and $\dot{r} = 0$, we find that 
+            $v_x = gR$, since $\vec{g}$ points radially at top.
+
+            Thus, $v_{\text{min}} = \sqrt{v_y^2 + v_x^2} = \sqrt{5gR}$.
+        \end{soln}
+    \end{example}
+
+
+    \begin{exc}
+        \begin{exercise}[subtitle={Projectile from a height}, points = 3]
+            \smallskip
+            ~\\
+            Consider a projectile thrown from height $h$ with velocity $v$. What is its maxium horizontal range?
+            There's two ways we will tackle this problem:
+
+            \begin{enumerate}
+                \item[(a)] Write down the equation of trajectory, but shifted so that $y \to y - h$. At $x = R$, the range,
+                 we should have $y = 0$ (or don't change $y$, but note that projectile motion is time reversible, so $y=h$ at 
+                 $x = R$). Then take the derivative of it with respect to $\theta$, while noting that for optimal trajectory 
+                 $\dv*{R}{\theta} = 0$. Find $\theta$ and then $R$.
+                 \item[(b)] Again write down the same shifted equation of trajectory. Now, write down every trignometric function
+                 in terms of $\tan\theta$. You should get a quadratic. For such a trajectory to exist, $\tan\theta$ must have 
+                 real roots. Use this to get $R$. 
+            \end{enumerate}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={River and Drift}, points = 2]
+            \smallskip
+            ~\\
+            A swimmer can swim with velocity $u$ in still water. If the river has a velocity $v$, what is the minimum 
+            distance through which she can cross the river? We'll do this in two ways as well.
+            \begin{enumerate}
+                \item[(a)] Let the velocity of the swimmer make an angle $\theta$ with the vertical. The distance perpendicular 
+                to stream does not change with $\theta$, so we can ignore it. Calculate and minimise then, the distance 
+                parallel to the flow of the river.
+                \item[(b)] Draw the \emph{velocity} space of the resultant velocity of $u$ and $v$. That is, by varying $\theta$,
+                consider how the resultant changes geometrically. Do this for both $v > u$ and $u \ge v$. 
+            \end{enumerate}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Brachistochrone}, points = 4]
+            \smallskip
+            ~\\
+            Suppose we drop a ball from a point $A$ to point $B$, vertically $h$ and horizontally $d$ apart along a 
+            curve. Find the curve which minimises the time of descent. You might find $v^2 = v_0^2 + 2g\Delta h$ helpful.
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Jumping over Roofs, Kalda}, points = 3]
+            \smallskip
+            ~\\
+            Two fences of heights $h_1$ and $h_2$ are erected on a horizontal plain, so that the tops
+            of the fences are separated by a distance $d$. Show that the minimum speed needed to throw a
+            projectile over both fences is $\sqrt{g(h_1 + h_2 + d)}$.
+            \label{exc: kaldaroof}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Perpendicular Velocities, Morin}, points = 3]
+            \smallskip
+            ~\\
+            In the maximum-distance case of \Cref{ex: max-wedge-projectile}
+            show that the initial and final velocities are perpendicular to each other. \emph{Hint: Use the fact 
+            that projectile motion is time reversible.}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Parabolic Envelope, Knzhou}, points = 5]
+            \smallskip
+            ~\\
+            The boundary of the set of all points a projectile with fixed velocity can reach by varying $\theta$ is 
+            a parabola, with the focus at launch point. We can use this to geometrically solve many problems.
+            \begin{enumerate}
+                \item[(a)] Show that the trajectory that touches any point on the parabola must be tangent to it.
+                \item[(b)] Show that the velocity at the point of tangency must be perpendicular to the initial one, if 
+                we reach the point on the parabola with minimum velocity. Use this to solve the previous problem.
+                \item[(c)]  Find the optimal angle in \Cref{ex: max-wedge-projectile} and solve \Cref{exc: kaldaroof}
+                using the envelope and (a), (b). 
+            \end{enumerate}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Projectiles with Vector, V2.}, points = 3]
+            \smallskip
+            ~\\
+            When a projectile thrown along a wedge hits it, the sum of the scaled velocity and acceleration vector 
+            must equal the vector along the slope with the magnitude equal to the distance the projectile travels 
+            along the wedge. 
+            
+            Using this, the vector equations for $\vec{v}$, $\vec{r}$ and part (b) of the previous problem,
+            show that $\vec{v}_0$ lies along the line joining focus and 
+            projection of point at which it hits the wedge on the directrix, and find the angle using some angle chase.
+            
+            Do not use the reflexive property of parabola, in fact, this gives you a proof for it.
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Tired Flappy Bird, OPhO}, points = 4]
+            \smallskip
+            ~\\
+            A flappy bird can jump multiple times in the air. Each time it jumps
+            mid-air, it can suddenly change its speed and direction. For every jump, the bird can decide when to jump
+            and in which direction. Between jumps, the bird falls freely under gravity, which pulls it down at the
+            acceleration $g$. 
+            
+            Say, our tired flappy bird starts off the cliff of height $H$ with the jumping velocity $V [1] = V_0$.
+            Subsequent jumps in mid-air have decreasing velocities, i.e. the $n$-th jump has speed $V [n] = V_0/n$, $(n > 1)$.
+            This majestic Vietnamese animal wants to travel as far as possible horizontally before it lands on the
+            ground. Find the maximum horizontal distance the bird can travel.
+        \end{exercise}
+    \end{exc}
+
+
+    \section{Frames and Symmetry}  
+    
+    Often in a mechanics problem, switching frames proves to be very beneficial. It is especially useful 
+    if we have two moving objects, and we move to the frame of one, or move to a frame that offers high 
+    symmetry. Suppose we move to a frame with position vector $\vec{R}$ with respect to our original frame. 
+    Call the original frame $S$ and the current one $S'$. If the position vector of an object in $S$ os $\vev{r}$
+    and in $S'$ is $\vec{r}'$, then,
+    \begin{equation}
+        \vec{r} = \vec{r}' + \vec{R}        
+    \end{equation}
+    The derivative of this gives 
+    \begin{equation}
+        \vec{v} = \vec{V} + \vec{v'}
+    \end{equation}
+    where $\dot{\vec{R}} = \vec{V}$ is the velocity of $S'$ with respect to $S$.
+    
+    We can go further, describing how accelerations are related, but that's not quite useful for kinematics, and 
+    is a whole chapter in itself. So we'll leave that for now. Also note that $S'$ is not rotating.
+
+    \begin{exc}
+        \begin{exercise}[subtitle={Symmetrical Circles, Kalda}, points = 2]
+            \smallskip
+            ~\\
+            Two intersecting circles of radius $r$ have centers a distance $a$ apart. If one circle moves towards the other with 
+            speed $v$, what is the speed of one of the points of intersection?
+        \end{exercise}
+        \begin{exercise}[subtitle={Rotating Circles, Kalda}, points = 3]
+            \smallskip
+            ~\\
+            Two circles of radius $r$ intersect at the point $O$. One of the circles rotates
+            about the point $O$ with constant angular speed $\omega$. The other point of intersection $O'$ is originally a
+            distance $d$ from $O$. Find the speed of $O'$ as a function of time.
+
+            A point rotating with angular speed $\omega$ about $O$ just means in the frame in which $O$ is the origin, 
+            and in polar co-ordinates, $\dot{\theta} = \omega$. 
+        \end{exercise}
+    \end{exc}
+
+    \section{Invariants}
+
+    Invariants are universal across physics. These give us \emph{conservation laws}, many of which we'll encounter in the 
+    later chapters.
+
+    An \vocab{Invariant} is a quantity that remains constant throughout time. Identifying an invariant in a problem is very
+    helpful, and can help us solve some seemingly impossible problems. 
+
+        \begin{example}
+            A cat moves with speed $v$ always directed towards a rat moving rectilinearly with speed $v$. They are initially at a distance $\ell$ from each other, 
+            and their initial velocities are perpendicular. After a long time they move along the same line, seperated
+            by a distance $d$. Find $d$ 
+            
+            \begin{soln}
+                    Solving this problem using the techniques we have already discussed is incredibly hard. 
+                    Whenever you do no know what to do, writing all the equations governing the system isn't a bad idea.
+                    
+                    As I mentioned in the previous section, it might be good to move into the frame of one 
+                    of them. Let's move into the frame of the fox. Let's orient our axis so that the seperation initially 
+                    was along the $y$ axis, and thus the cat moves with $v\ihat$. 
+
+                    Consider the system after time $t$, as in \Cref{fig: fox-chase}. We don't really 
+                    say anything nice in cartesian co-ordinates alone. But note that the velocity of the rat (aside from the 
+                    horizontal one) because of switching the frames must point radially. So let's try out 
+                    polar-coordinates. 
+                    
+                    The velocity along the $x$ axis 
+                    is $v - v\cos\theta$. The velocity along the radial direction is $v\cos\theta - v$. Thus,
+                    \[
+                        \dv{x}{t} + \dv{r}{t} = v - v\cos\theta + v\cos\theta - v = 0 \implies \dv{x + r}{t} = 0.
+                    \]
+                    So $x + r$ is a constant, independent of time. At $t = 0$, $r$ is just $\ell$ and $x = 0$. After a long 
+                    time, $x = r$. So, $d = r = \ell/2$. 
+            \end{soln}
+        \end{example}
+
+    \begin{marginfigure}
+        \vspace{-18em}
+        \scalebox{2}{\incfig{fox-chase}}
+        \caption{Velocities and distances in the frame of cat}
+        \label{fig: fox-chase}
+    \end{marginfigure}
+        
+It seems almost impossible to solve the previous problem without invariants, and in fact trying to solve without invariants 
+is very difficult. You can look at \href{https://arxiv.org/pdf/1108.2006}{this paper} for an extensive discussion on 
+the problem. We'll only do one problem for this here, since most would require some knowledge of dynamics. But the 
+idea is very important, and I urge you to keep it in mind. 
+\begin{exc}
+    \begin{exercise}[subtitle={Chasing Problem}, points = 2]
+        \smallskip
+        ~\\
+        Suppose the cat in the previous example has velocity $u > v$. How long does it take to catch the rabbit?
+    \end{exercise}
+    \end{exc}

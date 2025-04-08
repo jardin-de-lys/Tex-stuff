@@ -29,8 +29,10 @@
 
 %math setup
 \usepackage{amsmath}
-\usepackage[amsthm]{newtxmath}
-\DeclareMathSizes{10}{9}{6}{4}
+\usepackage{amsthm}
+%\usepackage[lite, subscriptcorrection]{mtpro2}
+\usepackage[amsthm, subscriptcorrection]{newtxmath}
+\DeclareMathSizes{9 }{9}{6}{4}
 
 %for better bold symbols
 \usepackage{bm}
@@ -52,16 +54,16 @@
 %mono font
 \setmonofont{JetBrainsMono}[
   Extension      = .ttf,
-  UprightFont    = JetBrainsMonoNl-Light,
-  ItalicFont     = *-Italic,
-  BoldFont       = *-Bold,
+  UprightFont    = JetBrainsMonoNerdFont-ExtraLight.ttf,
+  ItalicFont     = JetBrainsMonoNerdFont-Italic.ttf,
+  BoldFont       = JetBrainsMonoNerdFont-Bold.ttf,
 ]
 %for some reason too large
 \newfontfamily\JBMmdfamily{JetBrainsMono}[
   Extension      = .ttf,
-  UprightFont    = JetBrainsMonoNl-Light,
-  ItalicFont     = *-Italic,
-  BoldFont       = *-Bold,
+  UprightFont    = JetBrainsMonoNerdFont-ExtraLight.ttf,
+  ItalicFont     = JetBrainsMonoNerdFont-Italic.ttf,
+  BoldFont       = JetBrainsMonoNerdFont-Bold.ttf,
 ]
 
 %importing integral, sum, and partial symbol from mtpro2
@@ -88,7 +90,7 @@
 \renewcommand{\Huge}{\fontsize{40}{60}\selectfont}
 \newcommand{\chapnamefontsize}{\fontsize{36}{44}\selectfont}
 \renewcommand{\HUGE}{\fontsize{144}{150}\selectfont}
-
+%\renewcommand{\normalfont}{\fontsize{9.5}{11}\selectfont}
 %fonts for chapter.
 \newfontfamily\chapterfont{Jost Light}
 \newfontfamily\chapternumfont{Riesling}
@@ -287,7 +289,7 @@
 \usepackage{pgfornament}
 
 \renewcommand*{\thepart}{\arabic{part}}
-\renewcommand*{\parttitlefont}{\normalfont\itshape\Huge}
+\renewcommand*{\parttitlefont}{~\\ \normalfont\itshape\Huge}
 \renewcommand*{\partnamefont}{\normalfont\scshape\MakeLowercase}
 \renewcommand*{\partnumfont}{\normalfont\scshape\MakeLowercase}
 
