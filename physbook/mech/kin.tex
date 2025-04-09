@@ -188,6 +188,76 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     $$v_f = \frac{g}{\alpha} (e^{\alpha t} - 1).$$
 \end{example}
 
+\begin{example}
+    A car is at distance $d$ from a boy. It starts accelerating at constant acceleration $a$.  
+    What is the minimum velocity that the boy should have to catch up with the car?
+
+\begin{soln}
+    Consider separation of boy and car, $\Delta s$. Integrating twice for constant acceleration, we have  
+    $s_b = vt$, $s_c = \dfrac{1}{2}at^2$. Thus,
+    \[
+    \Delta s = d + \frac{1}{2}at^2 - vt
+    \]
+    So when they meet, we have a quadratic in $t$,
+    \[
+    at^2 - 2vt + 2d = 0
+    \]
+    From an inspection of the co-efficients of the $t$, $t^2$ terms and the constant, we see that if a real solution to this exists, 
+    it must be positive (if this may not be apparent, recall Vieta's relation and note $a, v, d$ are all positive).
+
+    So they must always meet if this has a real solution. Therefore, $b^2 - 4ac \geq 0$ for the equation
+    $at^2 + bt + c$. Solving for this, we have:
+    \[
+    v \geq \sqrt{2ad}
+    \]
+
+    Alternatively, moving into the frame of the boy (we discuss the later, so you can skip it for now), 
+    $v_f^2 = v^2 - 2ad$. Since $v_f^2 \ge 0$, $v^2 \ge 2ad$.
+\end{soln}
+\end{example}
+
+\begin{example}
+    A body is dropped at $t = 0$, after time $t = t_0$, another body is thrown downwards with velocity 
+    $u$. Assuming first body reaches ground first, plot graph of separation.
+    \begin{soln}
+        At instant $t_0$, displacement of first particle = ${gt_0^2}/{2}$. Note that here we set up 
+        co-ordinates such that positive $y$ is downwards from point of drop. 
+        The displacement of first body at time $t$ after $t_0$ but before \textit{reaching ground} is
+        \[
+        s_1 = \frac{1}{2}gt_0^2 + \frac{1}{2}g(t - t_0)^2
+        \]
+        While for second body is,
+        \[
+        s_2 = ut + \frac{1}{2}g(t - t_0)^2 
+        \]
+        Thus,
+        \[
+        s_{1,2} = \frac{1}{2}g(t_0)^2 + t(g t_0 - u) 
+        \]
+        However, after first body reaches ground,
+        \[
+        s_{1,2} = ut + \frac{1}{2}g(t)^2 
+        \]
+        which is a parabola. The overall graph is:
+        \begin{center}
+            \begin{tikzpicture}[scale=0.7]
+            \draw[->] (0,0) -- (5,0) node[right] {$t$};
+            \draw[->] (0,0) -- (0,4) node[above] {$s$};
+            
+            % Draw linear part of the graph
+            \draw[hkgreen, thick, domain=0:2] plot(\x, {0.8*\x + 1});
+            
+            % Draw parabolic part of the graph
+            \draw[hkgreen, thick, domain=2:3.559026084] plot(\x, {3.8 - 0.3*\x^2});
+            
+            % Dots to mark transition
+            \filldraw[slategreen] (2,2.6) circle (1pt);
+            \end{tikzpicture}
+        \end{center}
+    
+    \end{soln}
+\end{example}
+
 \section{Projectile Motion}
 
     Projectile Motion is a very famous setup in physics, and especially kinematic
@@ -287,11 +357,17 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
         \boxed{R = \frac{v_0^2\sin2\theta}{g}}.    
     \end{equation}
 
+    Using this, we can also alternatively write the equation of trajectory as,
+    \begin{equation}
+        y = x\tan\theta\left(1 - \frac{x}{R}\right)
+    \end{equation}
+
     What is the maximum value of $R$, the range, for a fixed velocity? Think about we can vary. Well, $\theta$ of course, and its easy to see the maximum occurs for $\theta = \pi/4$,
     so we \textit{optimise} the range, and say its maximum at $\theta = \pi/4$. 
 
     \begin{marginfigure}
-        \hspace{-3.7em}
+        \vspace{10em}
+        \hspace*{-4em}
         \scalebox{3.9}{\incfig{wedge-projectile}}
         \caption{Projectile grazing a wedge}
     \end{marginfigure}
@@ -375,9 +451,12 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     Thus qualitatively, projectile motion is independent of its horizontal range. 
     If some projectiles have the same maximum height, their time of flight \textit{will be the same}.
 
+    \newpage
+
     \begin{marginfigure}
-        \hspace{-3em}
-        \vspace{-3em}
+        \vspace{2em}
+        \hspace*{-3.3em}
+        \vspace{-2em}
         \scalebox{5}{\incfig{projectile-vec}}
         \caption{Projectile with Vectors}
         \label{fig: projectile-vec}
@@ -392,7 +471,6 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     \end{marginfigure}
 
     \begin{exc}
-        
             \begin{exercise}[subtitle={Projectile with Vectors.}, points = 3]
             \\
             We can integrate the kinematic equations vectorially, to get
@@ -452,9 +530,9 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     and $\that(\theta)$.
 
     \begin{marginfigure}
-        \hspace{-5em}
+        \hspace{-5.7em}
         \vspace{-3em}
-        \scalebox{4}{\incfig{polar-coords}}
+        \scalebox{4.5}{\incfig{polar-coords}}
         \caption{Polar-coordinates}
         \label{fig: polar}
     \end{marginfigure}
@@ -527,7 +605,9 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     \begin{example}
         The movement of a particle in a circle about some point is called circular motion. If we move to the 
         origin, $r$ does not change with time. Thus, $\dot{r} = \ddot{r} = 0$. This gives us $v = \dot{\theta}r$. 
-        $dot{\theta}$ is often refered to as the \vocab{Angular Speed}, $\omega$. We also find that
+        $\dot{\theta}$ is often refered to as the \vocab{Angular Speed}, $\omega$. 
+        
+        We also find that
         $a_r = -m\omega^2r$ and $a_\theta = r\ddot{\theta}$. If $\ddot{\theta} = 0$, then the motion is called 
         uniform circular motion, and the acceleration is perpendicular to the velocity.   
     \end{example}
@@ -542,6 +622,50 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     A large subset of these questions can be done purely by calculus, but that is not always the most elegant way to go 
     about it. We'll cover questions of both kinds, sometimes you do need to do the effort and the elegant solution
     may not be so elegant.
+        
+    \begin{marginfigure}
+        \vspace{20em}
+        \hspace*{-1.5em}
+        \scalebox{2.5}{\incfig{fermat-principle}}
+        \caption{One of the possible paths to reach from $A$ to $B$.} 
+    \end{marginfigure}
+
+    \begin{example}
+        A man can run at a speed $u$ and swim at a speed $v$. In the following diagram, 
+        the man starts at point $A$ and has to save his friend from drowning at point $B$. 
+        Assuming he likes his friend, what should he do? 
+
+        \begin{soln}
+            The man should call a lifeguard. Now, let's figure out how the lifeguard should run from point $A$ to $B$.
+            The time taken to reach the man is: 
+            \[
+                t = \frac{\sqrt{x^2 + h^2}}{u} + \frac{\sqrt{(d-x)^2 + h'^2}}{v}
+            \]
+            where $d$ is the horizontal distance between $A$, $B$, and $h$, $h'$ is vertical 
+            distance of $A$ and $B$ to the shore, and hence independent of the path taken.
+
+            The derivative of this with respect to the $x$ has to be $0$ for the best path of the lifeguard:
+            \[
+                \frac{x}{u\sqrt{x^2 + h^2}} = \frac{(d-x)}{v\sqrt{(d-x)^2 + h'^2}}
+            \]
+            But $\sin\alpha = x/\sqrt{x^2 + h^2}$ and $\sin\beta = (d-x)/\sqrt{(d-x)^2 + h'^2}$, so we have,
+            \begin{equation}
+            \boxed{\frac{u}{\sin\alpha} = \frac{v}{\sin\beta}}
+            \end{equation}
+        \end{soln}
+    \end{example}
+
+
+    This path follows the laws of refraction. In fact, this hints at a more general result for light, 
+    that being that it follows the path of least time. This is called Fermat's principle.
+     Of course, we don't care about what light does at this point, but it is a very cool 
+     result. Note for one that we paid no attention to which reference frame we were talking about, and it 
+     doesn't matter (unless its rotation).
+
+    As you may notice, the principle doesn't really depend on what the media or distances are,
+    in fact this is a general result.  
+
+    A beautiful application of this principle is the Brachistochrone problem, which is given at the end of this section. 
 
     \begin{example}
         \label{ex: max-wedge-projectile}
@@ -600,49 +724,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
              An easier way to find $x$ is to use \Cref{exc: projectile-tilted}, and then we can continue in the same
              manner.
     \end{example}
-    
 
-    \begin{marginfigure}
-        \hspace{-1em}
-        \scalebox{2.5}{\incfig{fermat-principle}}
-        \caption{One of the possible paths to reach from $A$ to $B$.} 
-    \end{marginfigure}
-
-    \begin{example}
-        A man can run at a speed $u$ and swim at a speed $v$. In the following diagram, 
-        the man starts at point $A$ and has to save his friend from drowning at point $B$. 
-        Assuming he likes his friend, what should he do? 
-
-        \begin{soln}
-            The man should call a lifeguard. Now, let's figure out how the lifeguard should run from point $A$ to $B$.
-            The time taken to reach the man is: 
-            \[
-                t = \frac{\sqrt{x^2 + h^2}}{u} + \frac{\sqrt{(d-x)^2 + h'^2}}{v}
-            \]
-            where $d$ is the horizontal distance between $A$, $B$, and $h$, $h'$ is vertical 
-            distance of $A$ and $B$ to the shore hence independent of the path taken.
-
-            The derivative of this with respect to the $x$ has to be $0$ for the best path of the lifeguard:
-            \[
-                \frac{x}{u\sqrt{x^2 + h^2}} = \frac{(d-x)}{v\sqrt{(d-x)^2 + h'^2}}
-            \]
-            But $\sin\alpha = x/\sqrt{x^2 + h^2}$ and $\sin\beta = (d-x)/\sqrt{(d-x)^2 + h'^2}$, so we have,
-            \begin{equation}
-            \boxed{\frac{u}{\sin\alpha} = \frac{v}{\sin\beta}}
-            \end{equation}
-        \end{soln}
-    \end{example}
-
-    This path follows the laws of refraction. In fact, this hints at a more general result for light, 
-    that being that it follows the path of least time. This is called Fermat's principle.
-     Of course, we don't care about what light does at this point, but it is a very cool 
-     result. Note for one that we paid no attention to which reference frame we were talking about, and it 
-     doesn't matter (unless its rotation).
-
-    As you may notice, the principle doesn't really depend on what the media or distances are,
-    in fact this is a general result.  
-
-    A beautiful application of this principle is the Brachistochrone problem, which is given at the end of this section. 
 
     We'll see this idea in the problems, but when the accelerations or velocities are complicated, but it is often helpful 
     to consider the \emph{velocity space} or the position space, which is just the vector space of all velocities, instead 
@@ -835,7 +917,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
                     The velocity along the $x$ axis 
                     is $v - v\cos\theta$. The velocity along the radial direction is $v\cos\theta - v$. Thus,
                     \[
-                        \dv{x}{t} + \dv{r}{t} = v - v\cos\theta + v\cos\theta - v = 0 \implies \dv{x + r}{t} = 0.
+                        \dv{x}{t} + \dv{r}{t} = v - v\cos\theta + v\cos\theta - v = 0 \implies \dv{(x + r)}{t} = 0.
                     \]
                     So $x + r$ is a constant, independent of time. At $t = 0$, $r$ is just $\ell$ and $x = 0$. After a long 
                     time, $x = r$. So, $d = r = \ell/2$. 
