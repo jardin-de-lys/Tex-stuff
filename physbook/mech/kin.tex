@@ -58,7 +58,7 @@ To describe the position of the particle, we use a position vector. A position v
 \end{definition}
 
 
-In \cref{fig: position}, the position vector of $A$ is $\vec{r}_A = x\ihat + y\jhat + z\khat$, where 
+In \Cref{fig: position}, the position vector of $A$ is $\vec{r}_A = x\ihat + y\jhat + z\khat$, where 
 $\ihat$ is the unit vector along the $x$ axis, $\jhat$ the unit vector along the $y$ axis and $\khat$ is 
 the one along the $z$ axis.
 
@@ -362,7 +362,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
         y = x\tan\theta\left(1 - \frac{x}{R}\right)
     \end{equation}
 
-    What is the maximum value of $R$, the range, for a fixed velocity? Think about we can vary. Well, $\theta$ of course, and its easy to see the maximum occurs for $\theta = \pi/4$,
+    What is the maximum value of $R$, the range, for a fixed velocity? Think about what we can vary. Well, $\theta$ of course, and its easy to see the maximum occurs for $\theta = \pi/4$,
     so we \textit{optimise} the range, and say its maximum at $\theta = \pi/4$. 
 
     \begin{marginfigure}
@@ -489,7 +489,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
                 discussing velocity and acceleration. \emph{Hint: How can we integrate a vector? Try to use its components.}
             
                 \item[(b)] Note that the vectors $\mathbf{v}_0 t$, $\mathbf{g} t^2 / 2$ are parallel to vector $\mathbf{v}_0$ and $\mathbf{g}$ respectively. 
-                Use this to find the range and time of flight. \textit{Hint: You will find \cref{fig: projectile-vec} useful.}
+                Use this to find the range and time of flight. \textit{Hint: You will find \Cref{fig: projectile-vec} useful.}
             \end{enumerate}
         \end{exercise}
 
@@ -542,7 +542,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     direction of increasing $\theta$ (tangent to the radial vector). 
     These two unit vectors are \textit{orthogonal} at any point.
 
-    In \cref{fig: polar}, if $\rhat$ makes an angle $\theta$ with the 
+    In \Cref{fig: polar}, if $\rhat$ makes an angle $\theta$ with the 
     horizontal, then,
     \begin{subequations}
         \label{eqn: polaruvec}
@@ -567,7 +567,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
 
     Or does it? What even is $\dv*{\rhat}{t}$? The answer 
     lies in the time-derivative of the unit vectors. Using the 
-    definitions in \cref{eqn: polaruvec}, we get:
+    definitions in \Cref{eqn: polaruvec}, we get:
     \begin{subequations}
         \begin{alignat}{2}
             \dv{\rhat}{t} &= \dot{\theta} \that  \\
@@ -580,10 +580,11 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     \vec{v} &= \dot{r} \rhat + r \dot{\theta} \that \\
     \vec{a} &= (\ddot{r} - r \dot{\theta}^2) \rhat + 
     (r \ddot{\theta} + 2 \dot{r} \dot{\theta}) \that 
+    \label{eq: polar-accel}
     \end{align}
 
     The most interesting result is the various terms of 
-    acceleration in (3.32). First, let us consider the terms along 
+    acceleration in \Cref{eq: polar-accel}. First, let us consider the terms along 
     $\rhat$. The term $\ddot{r}$ is the \textit{radial 
     acceleration}. It is the change in the radial speed (and thus 
     the radius). The second term $-r\dot{\theta}^2$ is the 
