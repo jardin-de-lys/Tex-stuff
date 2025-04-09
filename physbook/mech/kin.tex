@@ -520,6 +520,21 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
             \end{enumerate}
             \label{exc: projectile-tilted}
         \end{exercise}
+        \begin{exercise}[subtitle={Projectile with drag, Morin}, points = 4]
+        \smallskip
+        ~\\
+        A ball is thrown with speed $v_0$ at an angle $\theta$. Let the drag acceleration from the
+        air take the form $a = -\alpha \vec{v}$.
+        \begin{enumerate}
+            \item[(a)] Find $x(t)$ and $y(t)$.
+            \item[(b)] Assume that the drag coefficient takes the value that makes the magnitude of the
+             initial drag acceleration equal to $g$. If your goal is to have $x$ be as large as possible when
+             $y$ achieves its maximum value (you don't care what this maximum
+             value actually is), show that $\theta$ should satisfy $\sin \theta = (\sqrt{5} - 1)/2$, which just happens to be 
+             the inverse of the golden
+             ratio. 
+        \end{enumerate}
+        \end{exercise}
     \end{exc}
 
 
@@ -625,9 +640,9 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     A large subset of these questions can be done purely by calculus, but that is not always the most elegant way to go 
     about it. We'll cover questions of both kinds, sometimes you do need to do the effort and the elegant solution
     may not be so elegant.
-        
+    
+    \newpage
     \begin{marginfigure}
-        \vspace{20em}
         \hspace*{-1.5em}
         \scalebox{2.5}{\incfig{fermat-principle}}
         \caption{One of the possible paths to reach from $A$ to $B$.} 
@@ -769,6 +784,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
                  in terms of $\tan\theta$. You should get a quadratic. For such a trajectory to exist, $\tan\theta$ must have 
                  real roots. Use this to get $R$. 
             \end{enumerate}
+            \label{exc: wedge-projectile}
         \end{exercise}
 
         \begin{exercise}[subtitle={Optimal Projectile}, points = 2]
@@ -841,6 +857,13 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
                 \item[(c)]  Find the optimal angle in \Cref{ex: max-wedge-projectile} and solve \Cref{exc: kaldaroof}
                 using the envelope and (a), (b). 
             \end{enumerate}
+        \end{exercise}
+
+        \begin{exercise}[subtitle={Parabolic Envelope}, points = 3]
+        \smallskip
+        ~\\
+        Justify the claim that the boundary of boundary of the set of all points a projectile with fixed velocity can reach by varying $\theta$ is 
+        a parabola using the the second method of \Cref{exc: wedge-projectile}.
         \end{exercise}
 
         \begin{exercise}[subtitle={Projectiles with Vector, V2.}, points = 3]
@@ -961,7 +984,6 @@ the problem.
 We'll only do one problem for this here, since most would require some knowledge of dynamics. But the 
 idea is very important, and I urge you to keep it in mind. 
 
-\newpage
 
 \begin{exc}
     \begin{exercise}[subtitle={Chasing Problem}, points = 2]
