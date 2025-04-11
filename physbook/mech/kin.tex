@@ -26,9 +26,9 @@ don't. We'll have a look at using reference frames to deal with some questions
 later. 
 
 \begin{marginfigure}
-    \vspace{-5em}
+    \vspace{-4em}
     \scalebox{2}{\incfig{reference-frame}}
-    \caption{A cartesian reference frame}
+    \caption{A reference frame with cartesian co-ordinates.}
 \end{marginfigure}
 
 
@@ -182,9 +182,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     \dv{v}{t} = - g + \alpha v \iff \int_0^{-v_f} \frac{\dd{v}}{\alpha v - g} = \int_0^{t} \dd{t'}
     $$
     where we set the final velocity to $-v_f$ since its negative, and rename $t$ to $t'$ since we'll use it as our dummy variable, and $t$ as the limit of integration.
-
-    This can be solved using a simple u-sub, and is left as an exercise
-    to the reader. The final solution is,
+     The final solution is,
     $$v_f = \frac{g}{\alpha} (e^{\alpha t} - 1).$$
 \end{example}
 
@@ -470,6 +468,8 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
         \label{fig: projectile-titled-ground}
     \end{marginfigure}
 
+    \vspace*{-2em}
+
     \begin{exc}
             \begin{exercise}[subtitle={Projectile with Vectors.}, points = 2]
             \smallskip
@@ -547,7 +547,8 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     and $\that(\theta)$.
 
     \begin{marginfigure}
-        \hspace{-5.7em}
+        \vspace*{4.5em}
+        \hspace*{-5.7em}
         \vspace{-3em}
         \scalebox{4.5}{\incfig{polar-coords}}
         \caption{Polar-coordinates}
@@ -641,8 +642,8 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     about it. We'll cover questions of both kinds, sometimes you do need to do the effort and the elegant solution
     may not be so elegant.
     
-    \newpage
     \begin{marginfigure}
+        \vspace*{19em}
         \hspace*{-1.5em}
         \scalebox{2.5}{\incfig{fermat-principle}}
         \caption{One of the possible paths to reach from $A$ to $B$.} 
@@ -666,13 +667,14 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
             \[
                 \frac{x}{u\sqrt{x^2 + h^2}} = \frac{(d-x)}{v\sqrt{(d-x)^2 + h'^2}}
             \]
+
             But $\sin\alpha = x/\sqrt{x^2 + h^2}$ and $\sin\beta = (d-x)/\sqrt{(d-x)^2 + h'^2}$, so we have,
+            
             \begin{equation}
             \boxed{\frac{u}{\sin\alpha} = \frac{v}{\sin\beta}}
             \end{equation}
         \end{soln}
     \end{example}
-
 
     This path follows the laws of refraction. In fact, this hints at a more general result for light, 
     that being that it follows the path of least time. This is called Fermat's principle.
@@ -717,10 +719,11 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
             \[
             \dv{x}{\alpha} = 0.
             \]
+
             This also kind of illustrates a nice idea, since we need to get 
             the derivative 0, we can safely discard any multiplicative or 
             additive constants right away which will either have a zero 
-            differentiation, or can be divided by since the other side of 
+            derivative, or can be divided by since the other side of 
             the equation is simply 0.
                     
             We get that,
@@ -742,7 +745,6 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
              An easier way to find $x$ is to use \Cref{exc: projectile-tilted}, and then we can continue in the same
              manner.
     \end{example}
-
 
     We'll see this idea in the problems, but when the accelerations or velocities are complicated, but it is often helpful 
     to consider the \emph{velocity space} or the position space, which is just the vector space of all velocities, instead 
@@ -767,6 +769,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
         \end{soln}
     \end{example}
 
+    \newpage
 
     \begin{exc}
         \begin{exercise}[subtitle={Projectile from a height}, points = 3]
@@ -915,6 +918,11 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     We can go further, describing how accelerations are related, but that's not quite useful for kinematics, and 
     is a whole chapter in itself. So we'll leave that for now. Also note that $S'$ is not rotating.
 
+    If we wish to switch to a frame rotating with angular speed, $\omega$ then if everything is nice and planar, 
+    we can use the fact that the angular speeds also add in a vectorial manner, i.e. if $\omega = \dot{\theta}$
+    is in the direction of increasing theta, switching to a frame rotating with this $\omega$ would increase 
+    the angular speed of all points by $-\omega$ which is in the direction of decreasing theta.
+
     \begin{exc}
         \begin{exercise}[subtitle={Symmetrical Circles, Kalda}, points = 2]
             \smallskip
@@ -955,9 +963,10 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
                     of them. Let's move into the frame of the fox. Let's orient our axis so that the seperation initially 
                     was along the $y$ axis, and thus the cat moves with $v\ihat$. 
 
-                    Consider the system after time $t$, as in \Cref{fig: fox-chase}. We don't really 
+                    Consider the system after time $t$, as in \Cref{fig: fox-chase}. We can't really 
                     say anything nice in cartesian co-ordinates alone. But note that the velocity of the rat (aside from the 
-                    horizontal one) because of switching the frames must point radially. So let's try out 
+                    horizontal one) because of switching the frames must point radially, and is the 
+                    same as the horizontal velocity, so let's try out 
                     polar-coordinates. 
                     
                     The velocity along the $x$ axis 
