@@ -46,11 +46,11 @@
 }
 %environment overview for just after chapter stuff. Move this to a new file later.
 \newenvironment{overview}%
-  {\begin{minipage}{170mm}\begin{mdframed}[style=overviewbox]}%
+  {\begin{minipage}{180mm}\begin{mdframed}[style=overviewbox]}%
   {\end{mdframed}\end{minipage}}
 
 %Figure captions
-  \renewcommand{\figurename}{\small\sffamily {Figure}}
+  \renewcommand{\figurename}{\small\rmfamily\bfseries {Figure}}
 
 %dot seperator instead of colon
   \makeatletter
@@ -97,11 +97,11 @@
 \mdfdefinestyle{mdthmbox}{%
       roundcorner=4pt,
       linewidth=1pt,
-      skipabove=10pt,
-      skipbelow=7pt,
-      innertopmargin=9pt,
+      skipabove=15pt,
+      skipbelow=5pt,
+      innertopmargin=10pt,
       nobreak=true,
-      innerbottommargin=9pt,
+      innerbottommargin=5pt,
 }
 
 \mdfdefinestyle{mdquesbox}{%
@@ -270,7 +270,19 @@
 
   \newenvironment{exc}{%
       ~\\ \rule[0cm]{\textwidth-4cm}{0.01cm}\rule[-0.11cm]{4cm}{0.12cm} \vskip2pt {\hspace*{\textwidth-3.8cm}\Large\textbf{Exercises}}}%
-      {\bigskip \hrule}
+      {\bigskip \hrule \medskip}
     
 
-\newcommand{\sidenote}[1]{\reversemarginpar \marginnote{#1} \normalmarginpar}
+
+\usepackage{ifoddpage}
+
+\newcommand{\sidenote}[1]{
+  \checkoddpage
+  \ifoddpage
+    \marginnote{#1}
+  \else
+    \reversemarginpar
+    \marginnote{#1}
+    \normalmarginpar
+  \fi
+}

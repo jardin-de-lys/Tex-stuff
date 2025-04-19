@@ -46,7 +46,9 @@
 %  Numbers=Lining,
 %  Renderer=Basic
 %]
-\setmainfont{Baskerville}
+\setmainfont{Baskerville}[
+  BoldFont={Baskerville SemiBold}
+]
 %sans font, for section headings.
 \setsansfont{Jost Light}[
   BoldFont={Jost Medium},
@@ -92,7 +94,7 @@
 \renewcommand{\HUGE}{\fontsize{144}{150}\selectfont}
 %\renewcommand{\normalfont}{\fontsize{9.5}{11}\selectfont}
 %fonts for chapter.
-\newfontfamily\chapterfont{Jost Light}
+\newfontfamily\chapterfont{EB Garamond}
 \newfontfamily\chapternumfont{Riesling}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -126,12 +128,10 @@
 \usepackage{geometry}
 
 %page layout
-\setstocksize{260mm}{200mm}
+\setstocksize{260mm}{210mm}
 \settrimmedsize{0.9\stockheight}{0.9\stockwidth}{*}
-\setlrmarginsandblock{4.5cm}{2cm}{*}
-\setulmarginsandblock{2cm}{1.2cm}{*}
-\checkandfixthelayout
-\setlength{\oddsidemargin}{\evensidemargin}
+\setlrmarginsandblock{4.5cm}{1.6cm}{*}
+\setulmarginsandblock{1.8cm}{0cm}{*}
 
 %non indented paras.
 \setlength{\parindent}{0em}
@@ -139,6 +139,7 @@
 
 \usepackage[dvipsnames]{xcolor}
 \usepackage{ragged2e}
+\raggedbottom
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %     _______. _______   ______ .___________.__    ______   .__   __.   %
@@ -227,7 +228,7 @@
    % Red rule spanning the page
 \renewcommand{\chapterheadstart}{
     \vspace*{-80pt}% Adjust vertical spacing as needed
-    {\hspace*{-22mm}\color{slategreen}\rule{212mm}{25pt}} % Red box spanning the page
+    {\hspace*{-22mm}\color{slategreen}\rule{220mm}{25pt}} % Red box spanning the page
     \vspace{-50pt}
 }
 
@@ -246,7 +247,7 @@
    \vspace{1.5em}
     }%
    }
-   {\color{slategreen}\rule{170mm}{2pt}}
+   {\color{slategreen}\rule{180mm}{2pt}}
    \vspace{-40pt}
  }
 }
@@ -298,7 +299,7 @@
 \renewcommand*{\printpartnum}{}
 
 \renewcommand{\midpartskip}{\vspace*{1cm}\centering
-\hspace*{-1.25cm}\pgfornament[color=slategreen,width=15cm]{87}}
+\hspace*{-.6cm}\pgfornament[color=slategreen,width=15cm]{87}}
 \renewcommand{\beforepartskip}{\vspace*{\fill}}
 \renewcommand{\afterpartskip}{\vspace*{\fill}}
 
@@ -346,8 +347,10 @@
 \makeoddhead{fullwidth}%
 {}{}{%
 \emph{\leftmark\chapterfont}\;\;{\color{gray} | }\;\;\bfseries\thepage}
-
+\setheadfoot{10mm}{-10mm}
 \pagestyle{fullwidth}
+\checkandfixthelayout[fixed]
+\setlength{\oddsidemargin}{\evensidemargin}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

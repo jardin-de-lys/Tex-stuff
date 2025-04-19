@@ -7,23 +7,24 @@
     basic quantities that will used throughout physics. While there's not that much physical content in this 
     topic, it stands as quite an important topic in mechanics. Once you've solved the dynamic equations, all 
     that's left is kinematics.
-        \end{overview}
+\end{overview}
 
 \section{The Physical Quantities}
-
 \subsection{Frames and Particles}
 
 Motion of any object is considered to relative to an observer. The observer defines a
 particular co-ordinate system called the reference frame.
 
 \begin{definition}
-    A \vocab{Reference Frame} is a co-ordinate frame which can be moving or rotating, with respect to 
+    A \vocab{Reference Frame} is a frame with respect to 
     which we measure the physical quantities.
 \end{definition}
 
-There are some things that depend on our choice of reference frame, and some that
-don't. We'll have a look at using reference frames to deal with some questions
-later. 
+
+There is some distinction between the mathematics and physics to be made here.
+What we call a reference frame here is not purely a physical thing, it has co-ordinates.
+Some people prefer to distinguish between this and what we'll refer to as an \emph{observational reference frame},
+which is purely a physical concept which may be rotating, moving or be stationary.  
 
 \begin{marginfigure}
     \vspace{-4em}
@@ -31,6 +32,31 @@ later.
     \caption{A reference frame with cartesian co-ordinates.}
 \end{marginfigure}
 
+An observer in this observational reference frame may choose to employ any set of co-ordinates for measurements,
+for instance cartesian or spherical co-ordinates. The physical quantities are not affected by changing our 
+co-ordinate system in the same observational frame, but can change upon a change of the observational frame.
+
+
+\begin{remark}
+    We have yet to discuss acceleration and velocity, and things like angular velocity, and energy won't be introduced for a 
+    few more chapters, so you might wish to return to this remark later.
+
+    In the spirit of the prior discussion, we can define an observational reference frame 
+    implicitly through its properties. We might say that any co-ordinate frame with the same \emph{state of motion} is in the same observation 
+    frame of reference. By the state of motion we mean that it has the same velocity, acceleration, angular velocity,
+    etc, and by extension if its inertial or non inertial. Any sort of quantity that we measure in this frame: velocity,
+    acceleration, momentum, the rotational analogues, energy, etc.;
+    does not depend on our choice of co-ordinates, as is obvious intuitively.
+
+    An example of what we mean by an observational frame is for instance one moving 
+    with some velocity with respect to the ground/lab frame. No matter which co-ordinates we use, the measurements of the 
+    quantities will remain invariant in this frame. However the velocity of objects will differ from what we had in 
+    the lab frame.
+\end{remark}
+
+There are some things that depend on our choice of co-ordinates in our reference frame, and some that
+don't. We'll have a look at using reference frames to deal with some questions
+later. 
 
 Typically, we either use cartesian or curvilinear co-ordinates (spherical, cylindrical). 
 We'll have a look at the 2d versions of both in this chapter, especially plane polar-coordinates 
@@ -45,18 +71,17 @@ motion, as particles to a very good precision.
     A \vocab{Point Particle} is a particle whose size is negligible in the study of its motion.
 \end{definition}
 
-We'll later discuss extended bodies, and in particular rigid ones in mechanics, but initially this idea 
-of point particles will carry us far. 
+We'll later discuss extended bodies later, and in particular rigid ones in mechanics, but for now this idea 
+of point particles will suffice for us. And anyway, even then we'll continue to use it as far as it proves to be 
+useful.
 
 \subsection{Position and Displacement}
 
-To describe the position of the particle, we use a position vector. A position vector is an example of a 
-\emph{vector field}, about which we'll have much to say in electromagnetism and gravitation.
-
+To describe the position of the particle, we use a position vector. 
 \begin{definition}
     The \emph{position vector}, $\vec{r}(x, y, z)$, of the particle refers to the vector drawn from the origin to the particle.
 \end{definition}
-
+A position vector is an example of a \emph{vector field}.
 
 In \Cref{fig: position}, the position vector of $A$ is $\vec{r}_A = x\ihat + y\jhat + z\khat$, where 
 $\ihat$ is the unit vector along the $x$ axis, $\jhat$ the unit vector along the $y$ axis and $\khat$ is 
@@ -80,7 +105,7 @@ is not changed by using a rotated or translated reference frame.
 
 Note that displacement is not the property of the path, which is the \emph{distance}. For a path 
 of the form $y(x)$, to calculate the distance between $A$ and $B$, we need to calculate $\dd{\ell} = 
-\sqrt{\dd{x}^2 + \dd{y}^2} = \sqrt{(\dv*{y}{x})^2 + 1}\dd{x}$ which is the \vocab{arc length}.
+\sqrt{\dd{x}^2 + \dd{y}^2} = \sqrt{(\dd{y}/\dd{x})^2 + 1}\dd{x}$ which is the \vocab{arc length}.
 $\dd{\ell}$ is just the infinitesmal length of the path, which by pythagoras is equal to $\sqrt{\dd{y}^2 + \dd{x}^2}$.  
 
 Doing this integral, we get,
@@ -256,6 +281,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     \end{soln}
 \end{example}
 
+\newpage
 \section{Projectile Motion}
 
     Projectile Motion is a very famous setup in physics, and especially kinematic
@@ -448,8 +474,6 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
 
     Thus qualitatively, projectile motion is independent of its horizontal range. 
     If some projectiles have the same maximum height, their time of flight \textit{will be the same}.
-
-    \newpage
 
     \begin{marginfigure}
         \vspace{2em}
@@ -769,8 +793,6 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
         \end{soln}
     \end{example}
 
-    \newpage
-
     \begin{exc}
         \begin{exercise}[subtitle={Projectile from a height}, points = 3]
             \smallskip
@@ -951,7 +973,7 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
     helpful, and can help us solve some seemingly impossible problems. 
 
         \begin{example}
-            A cat moves with speed $v$ always directed towards a rat moving rectilinearly with speed $v$. They are initially at a distance $\ell$ from each other, 
+            A cat moves with speed $v$ always directed towards a mouse moving rectilinearly with speed $v$. They are initially at a distance $\ell$ from each other, 
             and their initial velocities are perpendicular. After a long time they move along the same line, seperated
             by a distance $d$. Find $d$ 
             
@@ -960,11 +982,11 @@ f''(x) = f'\frac{d\hspace{-0.35em}f'}{d\hspace{-0.35em}f}.
                     Whenever you do no know what to do, writing all the equations governing the system isn't a bad idea.
                     
                     As I mentioned in the previous section, it might be good to move into the frame of one 
-                    of them. Let's move into the frame of the fox. Let's orient our axis so that the seperation initially 
-                    was along the $y$ axis, and thus the cat moves with $v\ihat$. 
+                    of them. Let's move into the frame of the cat. Let's orient our axis so that the seperation initially 
+                    was along the $y$ axis, and thus the mouse moves with $v\ihat$. 
 
                     Consider the system after time $t$, as in \Cref{fig: fox-chase}. We can't really 
-                    say anything nice in cartesian co-ordinates alone. But note that the velocity of the rat (aside from the 
+                    say anything nice in cartesian co-ordinates alone. But note that the velocity of the mouse (aside from the 
                     horizontal one) because of switching the frames must point radially, and is the 
                     same as the horizontal velocity, so let's try out 
                     polar-coordinates. 
