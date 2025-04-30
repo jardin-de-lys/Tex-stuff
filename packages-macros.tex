@@ -1,14 +1,29 @@
-\usepackage{dsfont}
-\renewcommand{\mathbb}[1]{\mathds{#1}}
+
+\usepackage[cal=boondoxo,
+calscaled=.94,
+bb=dsfontserif,
+frak=esstix,
+frakscaled=.97,
+scr=dutchcal]{mathalpha}
+\usepackage{xargs}
 \usepackage{float}
 \usepackage[nameinlink]{cleveref}
 \crefname{exercise}{exercise}{questions}
 \usepackage{graphicx, calc, subcaption}
 \usepackage{emoji, enumitem}
 \usepackage{physics}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\usepackage{siunitx}
 \usepackage{tcolorbox}
 \usepackage{marginnote}
-
+\renewcommand{\cross}{\times}
+\renewcommand{\curl}[1]{\nabla\hspace{-0.1em} \times #1}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\addstuff}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+%
 %For spacing around f after nabla
 \usepackage{luacode}
 \begin{luacode}
@@ -37,7 +52,6 @@ end
 \endgroup
 
 
-\usepackage{xargs}
 \usepackage{centernot}
 \usepackage{mathtools}
 \usepackage{tikz-cd}
@@ -195,12 +209,12 @@ end
 
 
 %aliases
-\renewcommand{\ge}{\geqslant}
-\renewcommand{\le}{\leqslant}
+%\renewcommand{\ge}{\geqslant}
+%\renewcommand{\le}{\leqslant}
 \renewcommand{\subset}{\subsetneq}
 \newcommand{\auth}[1]{\emph{#1}}
 \newcommand{\para}[1]{#1 \par}
-\newcommand{\lpara}[1]{\par}
+\newcommand{\lpara}[1]{\par}  
 \newcommand{\parbreak}{\smallskip}
 
 %nice aliases
@@ -221,8 +235,8 @@ end
 
 %spacing and euler's number
 \newcommand{\e}{\,{\mathrm{e}}}
-\renewcommand{\dd}{\mathop{}\!{d}\!}
-\renewcommand{\diffd}{\mathop{}\!{d}\!}
+\renewcommand{\dd}[1][]{\mathop{}\!{d}\hspace{-0.1em}^{#1}\hspace{-0.11em}}
+\renewcommand{\diffd}{\mathop{}\!{d}\hspace{-0.17em}}
 
 %sidenotes
 %\newcommand{\sidenote}[1]{\marginpar{#1}}
@@ -230,8 +244,20 @@ end
 \renewcommand{\UrlFont}{\ttfamily\scriptsize}
 
 
+
 \newcommand{\ihat}{\vec{i}}
 \newcommand{\jhat}{\vec{j}}
 \newcommand{\khat}{\vec{k}}
 \newcommand{\that}{\vec{e}_{\theta}}
 \newcommand{\rhat}{\vec{e}_{r}}
+
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\PEX@}{\ifdim\dp\Pbox@>\dp\z@}{\ifdim\ht\Pbox@>\dp\z@}{}{}
+\makeatother
+
+\makeatletter
+\patchcmd{\PEX@}{\dp\Pbox@>\dp\z@}{\ht\Pbox@>\dp\z@}{}{}
+\patchcmd{\SQEX@}{\dp\Sbox@>\dp0}{\ht\Sbox@>\dp0}{}{}
+\makeatother

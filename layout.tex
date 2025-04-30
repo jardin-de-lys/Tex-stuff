@@ -31,9 +31,20 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 %\usepackage[lite, subscriptcorrection]{mtpro2}
-\usepackage[amsthm, subscriptcorrection]{newtxmath}
+\usepackage[lite, zswash, subscriptcorrection]{mtpro2}
 \DeclareMathSizes{9 }{9}{6}{4}
 
+
+\DeclareFontFamily{U} {cmsy}{}
+\DeclareFontShape{U}{cmsy}{m}{n}{
+  <-8> cmsy7
+  <8-9> cmsy8
+  <9-10> cmsy9
+  <10-> cmsy10}{}
+
+\DeclareSymbolFont{Xcmsy} {U} {cmsy}{m}{n}
+
+\DeclareMathSymbol{\times}{\mathord}{Xcmsy}{2}
 %for better bold symbols
 \usepackage{bm}
 
@@ -68,21 +79,6 @@
   BoldFont       = JetBrainsMonoNerdFont-Bold.ttf,
 ]
 
-%importing integral, sum, and partial symbol from mtpro2
-\DeclareFontFamily{U}{mtt}{}
-\DeclareFontShape{U}{mtt}{m}{up}{<->mt2exa}{}
-\DeclareFontShape{U}{mtt}{m}{it}{<-7> mt2mif <7-9> mt2mis <9-> mt2mit}{}
-
-\DeclareSymbolFont{splgreek}{U}{mtt}{m}{up}
-\DeclareSymbolFont{letters}{U}{mtt}{m}{it}
-
-\SetSymbolFont{splgreek}{normal}{U}{mtt}{m}{up}
-\SetSymbolFont{letters}{normal}{U}{mtt}{m}{it}
-
-\DeclareMathSymbol{\splsum}{\mathop}{splgreek}{"50}
-\let\sum\splsum
-\DeclareMathSymbol{\intop}{\mathop}{splgreek}{"52}
-\DeclareMathSymbol{\partial}{\mathord}{letters}{64}
 
 %redefinitions because they were acting weird
 \renewcommand{\Large}{\fontsize{15}{20}\selectfont}
