@@ -1,0 +1,148 @@
+\setlength{\chnumsep}{10em}
+\chapter{Electrostatics}
+
+\begin{overview}
+    Electrostatics is the study of fixed charges. In this chapter we'll cover one of maxwell's equation
+    and just a whole lot about how electric forces interact with each other, even though 
+    we won't quite talk about the motion of a charge particle.
+\end{overview}
+
+\section{Coloumb's Law}
+
+
+\sidenote{We write $\vec{F}_{12}$ for the force on particle $2$ due to interaction between particle $1$ and $2$ and $\vec{\mathscr{r}} \equiv \vec{r}_2 - \vec{r}_1$, the vector 
+from $1$ to $2$.}
+
+
+The fundamental law governing interactions between two charged particles is \vocab{Coloumb's Law}.
+The force on a particle of charge $q_1$ due to a particle of charge $q_2$, at positions $\vec{r}_1$ and $\vec{r}_2$ is:
+
+\begin{equation}
+    \boxed{\vec{F} = \frac{1}{4\pi\epsilon_0} \frac{q_1q_2}{\mathscr{r}^2} \uvec{\mathscr{r}}.}
+\end{equation}
+
+The coloumb forces similar to other forces we have seen now, follows the law of superposition. The force 
+is parallel to the line joining both the charges, and from a simple symmetry argument we can see that 
+it can be parallel to no other direction, atleast for stationary charges, since the only unique direction 
+in this case is the line joining both the charges. Space is isotropic, so if it points in any other direction, we can 
+simply rotate our whole setup with out altering anything to see that it must now point in a different direction.
+
+If for instance the charges were moving, the above argument would not hold--- we could have some force in 
+the direction perpendicular to acceleration and $\vec{\mathscr{r}}$ for instance. This would also be 
+true if the charges had any structure, and so another intrinsic direction. But then we would need more quantities 
+to talk about the charge than just the scalar $q$. This is true of the elementary particles (they have a 
+property called the \emph{spin}), including 
+electrons and leads to magnetic phenomena, and so does the movement of charges. In both cases the magnetic 
+force does not in general point along the direction joining the two charges.
+
+The constant for the coloumbic force, $1/4\pi\epsilon_0$ is introduced to historical reasons, where:
+\[
+\frac{1}{4\pi\epsilon_0} = 8.988 \cdot 10^9 \, \unit{\N\metre\squared\per\C\squared} \implies 
+\epsilon_0 = 8.854 \cdot 10^{-12} \, \unit{\C\squared\per\N\per\metre\squared}
+\]
+
+Consider the forces due to charges $q_1$, $q_2$, $\ldots$, $q_n$ on a test charge $Q$:
+\[
+\vec{F} = \sum_{i = 1}^{N} \frac{1}{4\pi\epsilon_0}  \frac{q_i Q}{{\mathscr{r}_i}^2} \uvec{\mathscr{r}}_i
+\]
+
+To simplify matters, because we wish to find the force due to the system on any such charge, it seems quite 
+fair to definine a quantity independent of the test charge. Thus we define the electric field, 
+which is the property of the \emph{system} of charges.
+
+\begin{definition}
+    The \vocab{Electric Field} due to a charge $q$ at a point having position vector $\vec{\mathscr{r}}$ with
+    respect to $q$ is:
+    \begin{equation}
+        \vec{E} \equiv \frac{1}{4\pi\epsilon_0} \frac{q}{\mathscr{r}^2}\uvec{\mathscr{r}}
+    \end{equation}
+\end{definition}
+
+So that the force on a charge $Q$ is simply:
+\[
+\vec{F} = Q\vec{E}
+\]
+where $\vec{E}$ is the electric field at the charge. We can see that $\vec{E}$ 
+also follows the law of superposition. Thus for a system of charges:
+\[
+\vec{E}(r) = \sum_{i = 1}^{N} \frac{1}{4\pi\epsilon_0}  \frac{q_i}{{\mathscr{r}_i}^2} \uvec{\mathscr{r}}_i
+\]
+where $\vec{\mathscr{r}}_i = \vec{r} - \vec{r}_i$, the vector from charge $q_i$ to $\vec{r}$.
+
+For a continous charge distribution the sum becomes an integral:
+\[
+\vec{E}(r) = \int_{\mathcal{V}} \frac{1}{4\pi\epsilon_0} \frac{\rho \dd[3]{r}}{{\mathscr{r}}^2} \uvec{\mathscr{r}}
+\]
+
+\addstuff{Add field lines, quantisation/conservation of charge, how dq is fine even though quantisation.}
+
+\subsection{Volume density for discrete charges}
+
+A more general way \improvement{Motivate this properly} to look at discrete, line and surface charges is in terms of the delta function.
+We can extend volume density to such places (which is much more physical) by using the delta function.
+For discrete charges:
+\[
+\rho(\vec{r}) = \sum q_i \delta(\vec{r} - \vec{r}_i) = \sum q_i \delta(\vec{\mathscr{r}}_i).
+\]
+
+The extension to surface charges and line charges is similar, for instance for a spherical shell with 
+surface charge $\sigma$ and radius $R$:
+\[
+\rho(\vec{r}) = \sigma \delta(\abs{\vec{r}} - R).
+\]
+
+
+\section{Gauss's Law}
+
+Suppose a charge is enclosed by a surface--- for a concrete example consider a charged particle inside it. 
+Then the amount of charge inside should be measure of the field lines, and thus the field. 
+
+\[
+\Phi = \int \vec{E} \vdot \uvec{n} \dd{a}  
+\]
+
+The force perpendicular to a surface charge, if the flux through it is $\Phi$ is:
+\[
+\vec{F} \vdot \uvec{n}  = \sigma \Phi 
+\]
+
+\subsection{Solid Angle}
+
+\section{Symmetries}
+
+\section{Scalar Potential}
+
+Since the curl of $\vec{E}$ is 0, it follows that:
+\[
+\int_{S} (\curl{\vec{E}}) \vdot \uvec{n} \dd[2]{r} = \int_{\partial S} \vec{E} \vdot \dd{\vec{\ell}} \implies 
+\int_{\partial S} \vec{E} \vdot \dd{\vec{\ell}} = 0.
+\]
+
+From this it follows that the line integral between any two points is independent of the path, so we define 
+a fuction using it.
+
+\begin{definition}
+    We define the scalar potential $V$ as:
+    \begin{equation}
+        V(\vec{r}) = -\int_{\mathcal{O}}^\vec{r} \vec{E} \vdot \dd{\vec{\ell}} 
+    \end{equation}
+    where $\mathcal{O}$ is the origin.
+\end{definition}
+
+Thus,
+\[
+ V(\vec{b}) - V(\vec{a}) = -\int_{\vec{a}}^\vec{b} \vec{E} \vdot \dd{\vec{\ell}} 
+\]
+But from the gradient theorem,
+\[
+ V(\vec{b}) - V(\vec{a}) = \int_{\vec{a}}^\vec{b} \grad{V} \vdot \dd{\vec{\ell}} 
+\]
+So it follows that:
+\begin{equation}
+    \vec{E} = -\grad{V}.
+\end{equation}
+
+From the definition it follows that the potential due to a charge distribution is simply:
+\[
+V(\vec{r}) = \int_{\mathcal{V}} \frac{1}{4\pi\epsilon_0} \frac{\rho \dd[3]r}{\mathscr{r}^2} \vec{\mathscr{r}}
+\]

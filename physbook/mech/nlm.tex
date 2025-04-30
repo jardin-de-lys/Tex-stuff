@@ -1,3 +1,104 @@
 \setlength{\chnumsep}{11.6em}
 \chapter{Laws of Motion}
 
+\begin{overview}
+    Newton's laws lay out the foundation of mechanics, and present us with the laws of physics 
+    that govern the everyday world. We'll later see that they aren't exact, but in the regime of common 
+    every day tasks, they present us with the tools to analyse any mechanical phenomenon. We'll also go 
+    through various applications of these laws along with the general discussion.
+\end{overview}
+
+\section{Newton's Laws}
+
+Classical mechanics is a deterministic theory, having known the state of the physical system at one instant,
+it wishes to determine the evolution of system as time goes on. You may have heard of indeterminance in quantum 
+mechanics through pop science, but remember that it doesn't invalidate classical mechanics. 
+
+In general 
+even a less correct theory is useful if we use it in the right regime. As long as we don't try to work 
+in classical mechanics while our cars are moving at the speed of light or our balls are comparable to 
+the size of atoms, we'll be fine.
+
+Classical mechanics is almost entirely governed by Newton's laws. Using merely a few axioms, 
+we can understand alot of the daily phenomenons that we see. Let's start with the first law. 
+
+\subsection{The First Law}
+
+\begin{enumerate}
+    \item[\textbf{N1}] Left alone, a particle moves with constant velocity.
+\end{enumerate}
+
+There are various different ways to write it of course, in terms of zero net force and whatever, but to 
+get the main physical insight from this we have to look a little deeper. First of all, what does it mean for 
+a particle to be left alone? 
+
+Well let's first take about things that are not left alone, for instance the planets. We know that each of 
+them interact physically with the sun and rotate around it. And there are other examples, a ball being 
+juggled, a cart being pushed, a nail being attracted by a magnet, etc. 
+
+The common theme here is that each 
+of the objects experiences a \emph{physical interaction} of some manner. Gravity, magnetic forces, 
+the force we exert, all are results of a physical interaction between two bodies. 
+
+And thus we expect that a body that if left alone does not experience any sort of physical interaction: it 
+is \emph{isolated} from all other objects. 
+
+This law doesn't really hold in all reference frames, but defines an inertial frame, which 
+provide the setting in which newton's laws hold. We'll later see that a little modification of these laws 
+will help us use them in any sort of frame, but we'll restrict ourself to inertial frames for now.
+
+\begin{definition}
+    An \vocab{Inertial Frame} is an observational frame of reference in which an isolated body moves 
+    with constant velocity.
+\end{definition}
+
+The first laws then boils down to an axiom of existence, and that is the physical content of the law:
+
+\begin{enumerate}
+    \item[\textbf{N1}] Inertial frames exists.
+\end{enumerate}
+
+Thus the first law is part definition and part experimental fact. From experiments, we know that our 
+axiom is in fact valid. But there is one issue here, can we always isolate a body? For instance suppose 
+that the interaction between it and some object increased as distance increases: then we could never 
+isolate it, no matter how far we went (going too close would give us all sort of other forces, like gravity). 
+
+Fortunately, from what we know experimentally, this is not the case. All interactions eventually become
+negligible as we increase the distance, so we can get an isolated body. Even without going to very large distances, 
+we can manually cancel out the other forces to get such a body (for instance by using an air track).
+
+In any case, the idea of an inertial frame is extremely important for classical mechanics, and we'll see 
+it pop up quite a few times.
+
+\subsection{The Second Law}
+
+\begin{enumerate}
+    \item[\textbf{N2}] The force on a body is proportial to the time rate of change of its momentum.
+\end{enumerate}
+
+Before talking about what forces are, let's define momentum:
+
+\begin{definition}
+    The \vocab{Linear Momentum} of a particle is:
+    \begin{equation}
+        \vec{p} \equiv m\vec{v}
+    \end{equation}
+\end{definition}
+
+Thus it follows from the second law that the force, $\vec{F}$ is:
+
+\begin{equation}
+    \vec{F} = \dot{\vec{p}} = m\dot{\vec{v}} + \dot{m}\vec{v}.
+\end{equation}
+
+We choose our units so that the constant of proportionality is $1$.
+
+For constant mass $\dot{m} = 0$ so that,
+
+\begin{equation}
+    \vec{F} = m\vec{a}.
+\end{equation}
+
+which is the form of the second law you are probably already acquainted with. There are a couple of problems 
+here: what is $m$, and what do we really mean by a force?
+
