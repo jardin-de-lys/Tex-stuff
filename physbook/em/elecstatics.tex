@@ -86,9 +86,9 @@ For discrete charges:
 \]
 
 The extension to surface charges and line charges is similar, for instance for a spherical shell with 
-surface charge $\sigma$ and radius $R$:
+surface charge $\sigma$ and radius $R$ centered at the origin is:
 \[
-\rho(\vec{r}) = \sigma \delta(\abs{\vec{r}} - R).
+\rho(\vec{r}) = \sigma \delta(\norm{\vec{r}} - R).
 \]
 
 
@@ -122,27 +122,103 @@ From this it follows that the line integral between any two points is independen
 a fuction using it.
 
 \begin{definition}
-    We define the scalar potential $V$ as:
+    We define the scalar potential $\phi$ as:
     \begin{equation}
-        V(\vec{r}) = -\int_{\mathcal{O}}^\vec{r} \vec{E} \vdot \dd{\vec{\ell}} 
+        \phi(\vec{r}) = -\int_{\mathcal{O}}^\vec{r} \vec{E} \vdot \dd{\vec{\ell}} 
     \end{equation}
     where $\mathcal{O}$ is the origin.
 \end{definition}
 
 Thus,
 \[
- V(\vec{b}) - V(\vec{a}) = -\int_{\vec{a}}^\vec{b} \vec{E} \vdot \dd{\vec{\ell}} 
+ \phi(\vec{b}) - \phi(\vec{a}) = -\int_{\vec{a}}^\vec{b} \vec{E} \vdot \dd{\vec{\ell}} 
 \]
 But from the gradient theorem,
 \[
- V(\vec{b}) - V(\vec{a}) = \int_{\vec{a}}^\vec{b} \grad{V} \vdot \dd{\vec{\ell}} 
+ \phi(\vec{b}) - \phi(\vec{a}) = \int_{\vec{a}}^\vec{b} \grad{\phi} \vdot \dd{\vec{\ell}} 
 \]
 So it follows that:
 \begin{equation}
-    \vec{E} = -\grad{V}.
+    \vec{E} = -\grad{\phi}.
 \end{equation}
 
 From the definition it follows that the potential due to a charge distribution is simply:
 \[
-V(\vec{r}) = \int_{\mathcal{V}} \frac{1}{4\pi\epsilon_0} \frac{\rho \dd[3]r}{\mathscr{r}^2} \vec{\mathscr{r}}
+\phi(\vec{r}) = \int_{\mathcal{V}} \frac{1}{4\pi\epsilon_0} \frac{\rho \dd[3]r}{\mathscr{r}^2} \vec{\mathscr{r}}
 \]
+
+\section{Electrostatic Potential Energy}    
+
+Suppose we have a charge distribution $\rho(\vec{r})$ in a potential $\phi'(\vec{r})$. We define the electrostatic 
+potential energy as:
+
+\begin{definition}
+    The electrostatic potential energy of a charge distribution $\rho(\vec{r})$ in a potential $\phi'(\vec{r})$ is:
+    \begin{equation}
+        V(\vec{r}) \equiv \int_{\mathcal{V}} \dd[3]r \, \rho(\vec{r}) \phi'(\vec{r})
+    \end{equation} 
+    where $\mathcal{V}$ is the region containing the charge distribution.
+\end{definition}
+
+For point charges $V = q\phi'$. This immediately leads us to Green's Reciprocity Theorem:
+
+\begin{theorem}[Green's Reciprocity Theorem]
+    The potential energy of $\rho_1$ in a field produced by $\rho_2$ is the same as the potential 
+    energy of $\rho_2$ in a field produced by $\rho_1$.
+\end{theorem}
+
+\begin{proof}
+    The proof of it follows from the definition of potential. The potential due to $\rho_2$ at $\vec{r}$ is:
+    \[
+    \phi_2(\vec{r})  = \frac{1}{4\pi\epsilon_0} \int \dd[3]{r'} \, \frac{\rho_2(\vec{r}')}{\mathscr{r}'}
+    \]
+    where $\vec{\mathscr{r}}' = \vec{r}  - \vec{r}'$ and the intergration is carried over all of space because 
+    $\rho_2$ is simply zero outside of the region containing charge. So the potential energy of $\rho_1$ is:
+    \[
+    V_1 = \int \dd[3]{r} \rho_1(\vec{r}) \int \frac{1}{4\pi\epsilon_0} \dd[3]{r'} \frac{\rho_2(\vec{r}')}{\mathscr{r}}
+    \]
+    Since $\rho(\vec{r})$ is not a function of $\vec{r}'$ we can write this as:
+    \[
+    V_1 = \frac{1}{4\pi\epsilon_0} \int \dd[3]{r} \int \dd[3]{r'} \frac{\rho_1(\vec{r})\rho_2(\vec{r}')}{\mathscr{r}}
+    \]
+    But note that $\vec{\mathscr{r}'} = \vec{r}' - \vec{r} \implies \mathscr{r}' = \mathscr{r}$. So that we can rewrite this as:
+    \[
+    V_1 = \frac{1}{4\pi\epsilon_0} \int \dd[3]{r} \int \dd[3]{r'} \frac{\rho_1(\vec{r})\rho_2(\vec{r}')}{\mathscr{r}'}
+    \]
+    which is exactly the potential energy of $\rho_2$ due to $\rho_1$! So we have
+    \begin{equation}
+        V_1 = V_2
+    \end{equation}
+\end{proof}
+
+The potential energy of a point charge seperated by a distance $r_{12}$ from another point charge is
+\[
+V = \frac{1}{4\pi\epsilon_0} \frac{q_1q_2}{r_{12}}
+\] 
+
+\subsection{Total Electrostatic Energy}
+
+The total electrostatic energy of the system is the energy required to assemble the system. That is, if 
+
+basically this is equal to the potential energy of a particle if the reference point is infty which you can 
+explicitly show.
+
+It doesn't matter how each particle gets to its final position atleast, so consider them travelling 
+on a line. Then consider infinitesmal displacements $\dd{r}, \dd{r}'$. Then $\dd{\mathscr{r}} = \dd{r} + \dd{r}' \implies 
+\dd{r} = \dd{\mathscr{r}} - \dd{r}'$. So potential is:
+\[
+\delta V = F_{12} \dd{r}  + F_{12} \dd{r}' = F_{12} \dd{\mathscr{r}}. 
+\]
+(this is the potential energy of each particle just use the dot product to see). 
+Anyway so we're done.
+
+In general for $n$ particles, the forces are independent of each other, so the potential energy just adds up in 
+superposition for each particle and like yeah the potential energy caused by having any two pair of charges 
+at distance $r_{ij}$ is simply:
+\[
+V_{ij} = \frac{kq_iq_j}{\mathscr{r}_{ij}}
+\]
+
+\hrule
+
+Anyway like you can say that this is equivalent to bringing $q_1$ to a distance $r_{12}$ from $q_2$ or whatever and compute.
