@@ -8,7 +8,7 @@
     through various applications of these laws along with the general discussion.
 \end{overview}
 
-\section{Newton's Laws}
+\section{Introduction}
 
 Classical mechanics is a deterministic theory, having known the state of the physical system at one instant,
 it wishes to determine the evolution of system as time goes on. You may have heard of indeterminance in quantum 
@@ -22,7 +22,7 @@ the size of atoms, we'll be fine.
 Classical mechanics is almost entirely governed by Newton's laws. Using merely a few axioms, 
 we can understand alot of the daily phenomenons that we see. Let's start with the first law. 
 
-\subsection{The First Law}
+\section{The First Law}
 
 \begin{enumerate}
     \item[\textbf{N1}] Left alone, a particle moves with constant velocity.
@@ -70,7 +70,7 @@ we can manually cancel out the other forces to get such a body (for instance by 
 In any case, the idea of an inertial frame is extremely important for classical mechanics, and we'll see 
 it pop up quite a few times.
 
-\subsection{The Second Law}
+\section{The Second Law}
 
 \begin{enumerate}
     \item[\textbf{N2}] The force on a body is proportial to the time rate of change of its momentum.
@@ -102,3 +102,69 @@ For constant mass $\dot{m} = 0$ so that,
 which is the form of the second law you are probably already acquainted with. There are a couple of problems 
 here: what is $m$, and what do we really mean by a force?
 
+First, let's talk about forces.
+
+\subsection{Force}   
+
+From the second law it almost seems tempting to include that whatever creates an acceleration is a force. 
+There's some merit to that idea but then the second law just becomes a definition--- and how will something 
+that we have purposefully defined as $\dot{\vec{p}}$ tell us something about the physical laws that we don't already know?
+
+First of all if we go be the intuitive definition of force, which you may have heard of as a ``push or pull",
+it is apparent that not all forces cause acceleration--- you can push a wall but it probably won't move (if it 
+does, a strongman might be one of the career paths you want to look into). But really then how do we go about 
+``defining'' what a force is?
+
+The point of interest here is that force is not a mere definition, it \emph{exists independetly of acceleration}.
+Whenever two bodies with some masses interact with each other gravitationally the force there is the gravitational 
+force and characterises the particular interaction. The forces are specified by the model in which we are working.
+
+Applying the same forces on two bodies should have the same 
+effect as described in the second law. If $\dd{m}_{i,j}/\dd{t} = 0$, then:
+\[
+m_i\vec{a}_i = m_j\vec{a}_j.
+\]
+This \emph{can} be verified, that the ratio in which accelerations of the two bodies, that are produced by the same force is constant 
+because $m_{i,j}$ do not change. 
+
+There is also the question on how we find the forces which act in our model--- say what is the force between 
+two stationary charged particles? The answer to that is well, using newton's second law. Acceleration is measurable,
+and we know $m$ for a specific particle (we will talk about that in a second) so by varying different parameters,
+the distance between particles, the masses of each, the charge etc. we can measure their acceleration, and thus 
+we can find how force scales with these factors. 
+
+This seems to almost invalidate our previous discussion--- we are know measuring forces through acceleration when 
+we just asserted that they're independent of it. That's not quite true, however, it is only because we know 
+forces are independent of the particle or acceleration at hand that we can say the same sort of force acts even when 
+the parameters are changed and how that force scales with these quantities. 
+After we have found the force, we can 
+again say because it is independent of the acceleration, it acts on any body under the same model and use the results 
+we have found.
+
+If you haven't been able to follow the discussion completely, don't worry, this doesn't affect our practical usage 
+of the second law. We will also make do with forces later, turning our attention to energy instead but that is a discussion 
+for another time.
+
+Another way to look at it is while the second law alone does not define a force, the three laws 
+can be understood as an axiom system for defining what a force is. We don't really need an explicit definition in 
+that case, many axiom systems are similar. If you are wondering why that is fine you might wish to learn logic. 
+
+\sidenote{If you wish to read more about this, consider \url{https://archive.org/details/conceptsofforces00jamm/page/260/mode/2up} and \url{https://www.math.cmu.edu/~wn0g/Force.pdf}.}
+
+In any case, using the three laws as axioms, all our preceding discussion tells us is how to experimentally verify
+the second law, and how physical models independetly carry the information about what the force we are looking for is 
+(rather than what forces in general are).
+
+\subsection{Mass}
+
+We will give an operational definition of mass.
+
+this is going to take some time.
+
+
+\section{The Third Law}
+
+\begin{enumerate}
+    \item[\textbf{N3}] The force on a body \(B\) due to another body \(A\) is equal and opposite to the force experienced
+    by \(A\) due to \(B\). 
+\end{enumerate}
