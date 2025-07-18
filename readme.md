@@ -19,8 +19,8 @@ The fonts used are listed in the table below.
 | [Riesling](https://www.dafont.com/riesling.font)    | Heading Numbers  |
 
 
-Aside from this the package `newtxmath` is used for times based math fonts. `mtp2lite` is also used for importing some symbols (in particular, 
-the really nice partial symbol), so a working installation of that is needed too. To install them on linux, [this guide](https://github.com/jamespfennell/mathtime-installer) 
+I use `mtp2lite` for math fonts, paired with some other fonts (since the lite version does not have bold and other variations), so a working installation of that is needed too. 
+To install them on linux, [this guide](https://github.com/jamespfennell/mathtime-installer) 
 can be followed. We only need the lite version of the fonts which is free to use.
 
 > [!Warning]
