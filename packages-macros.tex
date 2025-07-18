@@ -1,10 +1,11 @@
-
+%to set math fonts to use
 \usepackage[cal=boondoxo,
 calscaled=.94,
 bb=dsfontserif,
 frak=esstix,
 frakscaled=.97,
 scr=dutchcal]{mathalpha}
+%ysefyk packages
 \usepackage{xargs}
 \usepackage{float}
 \usepackage[nameinlink]{cleveref}
@@ -12,12 +13,14 @@ scr=dutchcal]{mathalpha}
 \usepackage{graphicx, calc, subcaption}
 \usepackage{emoji, enumitem}
 \usepackage{physics}
+%fix qty issue due to physics package
 \AtBeginDocument{\RenewCommandCopy\qty\SI}
 \usepackage{siunitx}
-\usepackage{tcolorbox}
 \usepackage{marginnote}
+%fixing some physics issues
 \renewcommand{\cross}{\times}
 \renewcommand{\curl}[1]{\nabla\hspace{-0.1em} \times #1}
+
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
@@ -35,6 +38,7 @@ end
 \end{luacode}
 \directlua{luatexbase.add_to_callback("process_input_buffer", nabla_f , "nablaf" )}
 
+%better typography
 \usepackage[activate={true,nocompatibility},factor=1100,stretch=10,shrink=10]{microtype}
 \microtypecontext{spacing=nonfrench}  % silence warning
 \tcbuselibrary{skins}
@@ -56,6 +60,8 @@ end
 \usepackage{mathtools}
 \usepackage{tikz-cd}
 \usepackage{cancel}
+
+%macros
 
 \newcommand{\minusspace}{\hspace{-0.05em}}
 \renewcommand{\vnabla}{\nabla}
@@ -239,18 +245,17 @@ end
 \renewcommand{\diffd}{\mathop{}\!{d}\hspace{-0.17em}}
 
 %sidenotes
-%\newcommand{\sidenote}[1]{\marginpar{#1}}
 %monofont too large
 \renewcommand{\UrlFont}{\ttfamily\scriptsize}
 
-
-
+%easier basis vectors
 \newcommand{\ihat}{\vec{i}}
 \newcommand{\jhat}{\vec{j}}
 \newcommand{\khat}{\vec{k}}
 \newcommand{\that}{\vec{e}_{\theta}}
 \newcommand{\rhat}{\vec{e}_{r}}
 
+%i dont remember what this does
 \usepackage{etoolbox}
 
 \makeatletter

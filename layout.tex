@@ -1,4 +1,5 @@
 \documentclass[a4paper, 10pt, twoside, openany]{memoir}
+%reduces compile time, albeit at the cost of way higher file size.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -50,7 +51,10 @@
 
 %load fontspec later, otherwise newtxmath has issues with bold.
 \usepackage{fontspec}
-
+\ExplSyntaxOn
+\cs_set:Nn \__fontspec_load_external_fontoptions:Nn
+ {}
+\ExplSyntaxOff
 %main font
 %\setmainfont{Fanwood}[
 %  BoldFont={EB Garamond SemiBold},

@@ -1,6 +1,6 @@
 %tikz for graphs and mdframed
 \usepackage{tikz}
-%thm tools
+%theorem related packages
 \usepackage{thmtools}
 \usepackage{import}
 \usepackage{xifthen}
@@ -12,7 +12,7 @@
         boxsep=3pt, left=0pt,right=0pt,top=0pt,bottom=0pt,
         colframe=slategreen,colback=slategreen,arc=1pt,outer arc=1pt
         }
-
+%env for adding figures.
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
     \scalebox{.5}{\import{../figures/}{#1.pdf_tex}}
@@ -180,12 +180,6 @@
   ]{thmexample}
 
 
-
-  %\declaretheoremstyle[
-  %headfont=\bfseries,
-  %mdframed={style=examplebox},
-  %headpunct={~\\ ~\\},
-  %]{thmexample}
   \mdfdefinestyle{rembox}{%
   skipbelow=2pt,
   skipabove=8pt,
@@ -275,7 +269,7 @@
 
 
 \usepackage{ifoddpage}
-
+%sidenote. Better to use than marginnote, as it fixes which side is to be used.
 \newcommand{\sidenote}[1]{
   \checkoddpage
   \ifoddpage
