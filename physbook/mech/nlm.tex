@@ -106,48 +106,66 @@ First, let's talk about forces.
 
 \subsection{Force}   
 
-From the second law it almost seems tempting to include that whatever creates an acceleration is a force. 
-There's some merit to that idea but then the second law just becomes a definition--- and how will something 
-that we have purposefully defined as $\dot{\vec{p}}$ tell us something about the physical laws that we don't already know?
+The section can be skipped without a loss of continuity.
 
-First of all if we go be the intuitive definition of force, which you may have heard of as a ``push or pull",
-it is apparent that not all forces cause acceleration--- you can push a wall but it probably won't move (if it 
-does, a strongman might be one of the career paths you want to look into). But really then how do we go about 
-``defining'' what a force is?
+From the second law it almost seems tempting to include that whatever 
+creates an acceleration is a force. There's some merit to that idea but 
+then the second law just becomes a definition—and how will something 
+that we have purposefully defined as $\vec{p}$ tell us something about 
+the physical laws that we don't already know?
 
-The point of interest here is that force is not a mere definition, it \emph{exists independetly of acceleration}.
-Whenever two bodies with some masses interact with each other gravitationally the force there is the gravitational 
-force and characterises the particular interaction. The forces are specified by the model in which we are working.
+First of all if we go be the intuitive definition of force, which you 
+may have heard of as a “push or pull”, it is apparent that not all 
+forces cause acceleration—you can push a wall but it probably won't 
+move (if it does, a strongman might be one of the career paths you want 
+to look into). But really then how do we go about “defining” what a 
+force is?
 
-Applying the same forces on two bodies should have the same 
-effect as described in the second law. If $\dd{m}_{i,j}/\dd{t} = 0$, then:
+The point of interest here is that force is not a mere definition, it 
+\textit{exists independently of acceleration}. Whenever two bodies with 
+some masses interact with each other gravitationally the force there is 
+the gravitational force and characterises the particular interaction. 
+The forces are specified by the model in which we are working.
+
+Applying the same forces on two bodies should have the same effect as 
+described in the second law. If $dm_i/dt = 0$, then:
+
 \[
-m_i\vec{a}_i = m_j\vec{a}_j.
+m_i a_i = m_j a_j.
 \]
-This \emph{can} be verified, that the ratio in which accelerations of the two bodies, that are produced by the same force is constant 
-because $m_{i,j}$ do not change. 
 
-There is also the question on how we find the forces which act in our model--- say what is the force between 
-two stationary charged particles? The answer to that is well, using newton's second law. Acceleration is measurable,
-and we know $m$ for a specific particle (we will talk about that in a second) so by varying different parameters,
-the distance between particles, the masses of each, the charge etc. we can measure their acceleration, and thus 
-we can find how force scales with these factors. 
+This \textit{can} be verified, that the ratio in which accelerations of 
+the two bodies, that are produced by the same force is constant because 
+$m_i$, $m_j$ do not change.
 
-This seems to almost invalidate our previous discussion--- we are know measuring forces through acceleration when 
-we just asserted that they're independent of it. That's not quite true, however, it is only because we know 
-forces are independent of the particle or acceleration at hand that we can say the same sort of force acts even when 
-the parameters are changed and how that force scales with these quantities. 
-After we have found the force, we can 
-again say because it is independent of the acceleration, it acts on any body under the same model and use the results 
-we have found.
+There is also the question on how we find the forces which act in our 
+model—say what is the force between two stationary charged particles? 
+The answer to that is well, using Newton's second law. Acceleration is 
+measurable, and we know $m$ for a specific particle (we will talk about 
+this in a second) so by varying different parameters, the distance 
+between particles, the masses of each, the charge etc. we can measure 
+their acceleration, and thus we can find how force scales with those 
+factors.
 
-If you haven't been able to follow the discussion completely, don't worry, this doesn't affect our practical usage 
-of the second law. We will also make do with forces later, turning our attention to energy instead but that is a discussion 
-for another time.
+This seems to almost invalidate our previous discussion—we are now 
+measuring forces through acceleration when we just asserted that they're 
+independent of it. That's not quite wrong, however, it is only because 
+we know forces are independent of the particle or acceleration that we 
+can now say the same sort of force acts even when the parameters are 
+changed and how that force scales with the quantities. After we have 
+found the force, we can again say because it is independent of the 
+acceleration, it acts on any body under the same model and use the 
+results we have found.
 
-Another way to look at it is while the second law alone does not define a force, the three laws 
-can be understood as an axiom system for defining what a force is. We don't really need an explicit definition in 
-that case, many axiom systems are similar. If you are wondering why that is fine you might wish to learn logic. 
+If you haven't been able to follow the discussion completely, don't 
+worry, this doesn't affect your actual usage of the second law. We will 
+also make do with forces later, turning our attention to energy instead 
+but that is a discussion for another time.
+
+Another way to look at it is while the second law alone does not define 
+a force, the three laws can be understood as an axiom system for 
+defining what a force is. We don't really need an explicit definition in 
+that case, many axiom systems are similar.
 
 \sidenote{If you wish to read more about this, consider \url{https://archive.org/details/conceptsofforces00jamm/page/260/mode/2up} and \url{https://www.math.cmu.edu/~wn0g/Force.pdf}.}
 
@@ -155,12 +173,95 @@ In any case, using the three laws as axioms, all our preceding discussion tells 
 the second law, and how physical models independetly carry the information about what the force we are looking for is 
 (rather than what forces in general are).
 
+About the whole whatever causes acceleration is a force thing by the way, that is also not
+exactly true. Suppose that a block is accelerating to the right with some acceleration. Is the
+force on it equal to ma and towards the right? Not quite, the actual force maybe in whatever
+direction, insofar that it has a component in the direction of the acceleration, and may have
+some other value ``$ma$'' is not the force. 
+
+The force is once again, whatever arises out of actual
+physical interaction, and what we exists in our model.
+It might be tempting to ask in case of forces where such an interaction is not visible, say
+gravity, does this physical interaction really exist? In fact, it does the interaction is mediated
+through the use of fields.
+
+Sometimes we may also be concerned with forces arising due to macroscopic effects of small
+interactions. We do not thus, consider them by first principle and repeatedly apply the laws of
+our fundamental forces, but instead make empirical laws to avoid complexity, like the normal,
+tension, spring, etc. forces.
+
 \subsection{Mass}
 
-We will give an operational definition of mass.
+Assume that there are two bodies, of masses $m_1$ and $m_2$. Suppose 
+they are under the same force. In this example, in particular we can 
+consider a very elementary idea of the deformation in springs.
 
-this is going to take some time.
+By experimental results, we know that the deformation in spring is 
+proportional to the force exerted by it. Consider a setup in which we 
+connect a carriage of negligible mass which is connected to a spring; 
+by a rod to a cart which we can accelerate at any acceleration freely.
 
+\begin{marginfigure}
+    \begin{tikzpicture}[scale=1.2]
+
+  % Wall
+  \fill[black] (0,0) rectangle (0.2,3);
+
+  % Spring
+  \draw[decorate, decoration={aspect=0.3, segment length=3mm, amplitude=3mm, coil}] 
+    (0.2,2) -- (2.5,2);
+
+  % Carriage (mass m1)
+  \fill[black] (2.5,1.6) rectangle (3.1,2.4);
+  \node[right] at (3.1,2.0) {\emph{Carriage}, $m_1$};
+
+  
+  % Cart
+  \fill[black] (0.2,0.55) rectangle (1,0.75);
+  \fill[black] (1,0.4) rectangle (1.6,0.9);
+  \node[right] at (1.6,0.65) {\emph{Cart}};
+
+\end{tikzpicture}
+\caption{A cart connected to a carriage on an air track. As we
+accelerate the cart, we also accelerate the carriage and compress
+the spring until we achieve our desired compression length. The spring force mediates the force
+which we use to pull the cart to the carriage.}
+\end{marginfigure}
+
+We place the setup on an air track, which is a one-dimensional track 
+that has holes blowing out air to ensure that the effect of forces such 
+as friction is negligible on the body.
+
+Suppose we place a mass $m_1$ in the carriage, and accelerate the cart 
+to acceleration $a_1$ so that the carriage too accelerates with $a_1$. 
+The only force experienced by the mass is the spring force, which causes 
+it to accelerate with acceleration $a_1$. We wait till the spring stops 
+compressing, and note down the final length, call it $\ell$.
+
+Now, we can repeat this experiment for a mass $m_2$ and get some 
+acceleration $a_2$ by adjusting the acceleration of the cart such that 
+the final length of the spring when it stops compressing becomes $\ell$.
+
+Since we claimed that the force exerted by a spring is proportional to 
+its compression, the force experienced by a mass $m_1$ accelerating at 
+$a_1$ is equal to the force experienced by $m_2$ accelerating at $a_2$. 
+So, $m_1 a_1 = m_2 a_2$. And taking the $m_1$ as the unit mass, we define,
+
+\[
+m_2 \equiv m_1 \frac{a_1}{a_2}.
+\]
+
+We define the mass of the first body relative to the other. The 
+accelerations can be absolutely measured using an accelerometer. In such 
+a manner we define the acceleration of any $i^{th}$ body relative to the 
+first one as,
+
+\[
+m_i \equiv m_1 \frac{a_1}{a_i}.
+\]
+
+We define some standard mass as 1 unit and then define the other masses 
+relative to this. Such a definition is an \emph{operational definition}.
 
 \section{The Third Law}
 
@@ -168,3 +269,8 @@ this is going to take some time.
     \item[\textbf{N3}] The force on a body \(B\) due to another body \(A\) is equal and opposite to the force experienced
     by \(A\) due to \(B\). 
 \end{enumerate}
+
+The third law is also known as the weak law of action and reaction— in direct contrast with
+the strong law which requires the equal and opposite forces to lie on the same line of action.
+Most forces such as gravity and the normal force in fact obey the strong law of action and
+reaction. We will see later, when we deal with rotations, that all forces not obeying the strong law causes some headache.
